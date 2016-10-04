@@ -8,7 +8,7 @@
 
 namespace algorithms
 {
-    // source: https://en.wikipedia.org/wiki/Breadth-first_search
+    // pseudocode source: https://en.wikipedia.org/wiki/Breadth-first_search
     void bfs(shared_ptr<UGraph> graph, uint startVertex)
     {
         std::queue queue;
@@ -41,7 +41,7 @@ namespace algorithms
         }
     }
 
-    // source: https://en.wikipedia.org/wiki/Depth-first_search
+    // pseudocode source: https://en.wikipedia.org/wiki/Depth-first_search
     void dfs(shared_ptr<UGraph> graph, uint startVertex)
     {
         std::stack stack;

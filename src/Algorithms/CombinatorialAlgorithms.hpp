@@ -4,7 +4,7 @@
 
 namespace algorithms
 {
-    // source: https://en.wikipedia.org/wiki/Cycle_detection
+    // pseudocode source: https://en.wikipedia.org/wiki/Cycle_detection
     template <typename T>
     std::pair<uint, uint> detectCycleFloyd(T (*f)(T& data), T& data)
     {
@@ -60,7 +60,7 @@ namespace algorithms
         return std::make_pair<uint, uint>(startCycle, endCycle);
     }
 
-    // source: https://en.wikipedia.org/wiki/Cycle_detection
+    // pseudocode source: https://en.wikipedia.org/wiki/Cycle_detection
     template <typename T>
     std::pair<uint, uint> detectCycleBrent(T (*f)(T& data), T& data)
     {
