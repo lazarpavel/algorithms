@@ -8,10 +8,10 @@ LD_FLAGS = $(lib)
 CPP_ALGORITHMS_FILES := $(wildcard Algorithms/*.cpp)
 OBJ_ALGORITHMS_FILES := $(addprefix ../obj/,$(notdir $(CPP_ALGORITHMS_FILES:.cpp=.o)))
 
-CPP_ALGORITHMS_TEST_FILES := $(wildcard AlgorithmsTest/*.cpp)
-OBJ_ALGORITHMS_TEST_FILES := $(addprefix ../obj/,$(notdir $(CPP_ALGORITHMS_TEST_FILES:.cpp=.o)))
+CPP_UNIT_TEST_FILES := $(wildcard UnitTests/*.cpp)
+OBJ_UNIT_TEST_FILES := $(addprefix ../obj/,$(notdir $(CPP_UNIT_TEST_FILES:.cpp=.o)))
 
-all: create_test_dir ../bin/test/AlgorithmsTest
+all: create_test_dir ../bin/test/UnitTests
 
 create_test_dir:
 	mkdir -p ../bin/test
@@ -25,7 +25,7 @@ run_tests:
 ../obj/%.o: */%.cpp
 	$(CXX) $(CXXFLAGS) $(inc) -c -o $@ $<
 
-../bin/test/AlgorithmsTest: $(OBJ_ALGORITHMS_TEST_FILES) $(OBJ_ALGORITHMS_FILES)
+../bin/test/UnitTests: $(OBJ_UNIT_TEST_FILES) $(OBJ_ALGORITHMS_FILES)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LD_FLAGS)
 
 clean:

@@ -37,7 +37,7 @@ TEST_CASE("Data Sorting", "Sorting Algorithms")
     SECTION("Selection Sort")
     {
         vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24};
+        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
         algorithms::selectionSort(items);
 
