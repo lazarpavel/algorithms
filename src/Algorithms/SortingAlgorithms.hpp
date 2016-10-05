@@ -2,6 +2,11 @@
 
 #include <vector>
 #include <utility>
+#include <memory>
+
+#include "../DataStructures/Heap.hpp"
+
+using namespace datastructures;
 
 namespace algorithms
 {
@@ -19,6 +24,7 @@ namespace algorithms
         return minIdx;
     }
 
+    // Time: O(n^2)
     template <typename T>
     void selectionSort(std::vector<T>& items)
     {
@@ -29,9 +35,13 @@ namespace algorithms
         }
     }
 
+    // Time: O(n * log n)
     template <typename T>
     void heapSort(std::vector<T>& items)
     {
-        // TODO:
+        std::shared_ptr<MinHeap<T>> minHeap = std::make_shared<MinHeap<T>>(items);
+
+        for (uint i = 0; i < items.size(); ++i)
+            items[i] = minHeap->extract();
     }
 }
