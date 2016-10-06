@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <queue>
 #include <utility>
 #include <memory>
 
@@ -43,5 +44,68 @@ namespace algorithms
 
         for (uint i = 0; i < items.size(); ++i)
             items[i] = minHeap->extract();
+    }
+
+    // source: The Algorithm Design Manual by Steven S. Skiena
+    template <typename T>
+    void merge(std::vector<T>& items, uint low, uint middle, uint high)
+    {
+        std::queue<T> lhs;
+        std::queue<T> rhs;
+
+        for (uint i = low; i <= middle; ++i)
+            lhs.push(items[i]);
+
+        for (uint i = middle + 1; i <= high; ++i)
+            rhs.push(items[i]);
+
+        uint it = low;
+        while (!(lhs.empty() || rhs.empty()))
+        {
+            if (lhs.front() <= rhs.front())
+            {
+                items[it++] = lhs.front();
+                lhs.pop();
+            }
+            else
+            {
+                items[it++] = rhs.front();
+                rhs.pop();
+            }
+        }
+
+        while (!lhs.empty())
+        {
+            items[it++] = lhs.front();
+            lhs.pop();
+        }
+
+        while (!rhs.empty())
+        {
+            items[it++] = rhs.front();
+            rhs.pop();
+        }
+    }
+
+    // source: The Algorithm Design Manual by Steven S. Skiena
+    template <typename T>
+    void mergeSort(std::vector<T>& items, uint low, uint high)
+    {
+        if (low < high)
+        {
+            uint middle = (low + high) / 2;
+
+            mergeSort(items, low, middle);
+            mergeSort(items, middle + 1, high);
+
+            merge(items, low, middle, high);
+        }
+    }
+
+    // Time: O(n * log n)
+    template <typename T>
+    void mergeSort(std::vector<T>& items)
+    {
+        mergeSort(items, 0, items.size() - 1);
     }
 }
