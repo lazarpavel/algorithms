@@ -108,4 +108,43 @@ namespace algorithms
     {
         mergeSort(items, 0, items.size() - 1);
     }
+
+    // source: The Algorithm Design Manual by Steven S. Skiena
+    template <typename T>
+    uint partition(std::vector<T>& items, uint low, uint high)
+    {
+        uint pivot = high;
+        uint firstHigh = low;
+
+        for (uint it = low; it < high; ++it)
+        {
+            if (items[it] < items[pivot])
+            {
+                std::swap(items[it], items[firstHigh]);
+                ++firstHigh;
+            }
+        }
+
+        std::swap(items[pivot], items[firstHigh]);
+        return firstHigh;
+    }
+
+    // source: The Algorithm Design Manual by Steven S. Skiena
+    template <typename T>
+    void quickSort(std::vector<T>& items, uint low, uint high)
+    {
+        if (low < high)
+        {
+            uint pivot = partition(items, low, high);
+
+            quickSort(items, low, pivot - 1);
+            quickSort(items, pivot + 1, high);
+        }
+    }
+
+    template <typename T>
+    void quickSort(std::vector<T>& items)
+    {
+        quickSort(items, 0, items.size() - 1);
+    }
 }
