@@ -142,6 +142,7 @@ namespace algorithms
         }
     }
 
+    // Time: O(n * log n) -> O(n ^ 2) - Worst Case
     template <typename T>
     void quickSort(std::vector<T>& items)
     {
