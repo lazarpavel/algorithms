@@ -87,4 +87,15 @@ TEST_CASE("Data Searching", "Search Algorithms")
         REQUIRE(it != items.end());
         REQUIRE(*it == -1);
     }
+
+    SECTION("Binary Search")
+    {
+        vector<int> items = { -1, 3, 3, 5, 6, 24, 24 };
+
+        vector<int>::iterator it = algorithms::binarySearch(items.begin(), items.end(), 24);
+        REQUIRE(*it == 24);
+
+        it = algorithms::binarySearch(items.begin(), items.end(), 2);
+        REQUIRE(it == items.end());
+    }
 }
