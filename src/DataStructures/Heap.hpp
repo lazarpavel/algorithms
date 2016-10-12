@@ -17,6 +17,7 @@ namespace datastructures
         virtual T get() const;
         virtual T extract();
         virtual void insert(const T& value);
+        virtual void print() const;
 
     protected:
         virtual bool compare(const T& lhs, const T& rhs) const = 0;
@@ -37,8 +38,17 @@ namespace datastructures
     template <typename T>
     Heap<T>::Heap(std::vector<T> items)
     {
-        m_items.reserve(items.size());
+        m_items.resize(items.size());
         m_position = 0;
+    }
+
+    template <typename T>
+    void Heap<T>::print() const
+    {
+        for (uint i = 0; i < m_items.size(); ++i)
+            std::cout << m_items[i] << " ";
+
+        std::cout << std::endl;
     }
 
     template <typename T>
@@ -62,7 +72,7 @@ namespace datastructures
     void Heap<T>::shiftUp()
     {
         uint tmp = m_position - 1;
-        while(tmp > 0 && compare(m_items[tmp / 2], m_items[tmp]))
+        while(tmp > 1 && compare(m_items[tmp / 2], m_items[tmp]))
         {
             swap(tmp, tmp / 2);
             tmp = tmp / 2;

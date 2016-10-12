@@ -3,6 +3,7 @@
 #include "catch.hpp"
 
 #include "./Algorithms/SortingAlgorithms.hpp"
+#include "./Algorithms/SearchAlgorithms.hpp"
 
 using namespace std;
 
@@ -72,5 +73,18 @@ TEST_CASE("Data Sorting", "Sorting Algorithms")
         algorithms::quickSort(items);
 
         REQUIRE(items == expected);
+    }
+}
+
+TEST_CASE("Data Searching", "Search Algorithms")
+{
+    SECTION("Linear Search")
+    {
+        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+
+        vector<int>::iterator it = algorithms::linearSearch(items.begin(), items.end(), -1);
+
+        REQUIRE(it != items.end());
+        REQUIRE(*it == -1);
     }
 }

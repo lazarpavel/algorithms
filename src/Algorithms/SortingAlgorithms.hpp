@@ -147,4 +147,9 @@ namespace algorithms
     {
         quickSort(items, 0, items.size() - 1);
     }
+
+    template <typename T>
+    void bucketSort(std::vector<T>& items)
+    {
+    }
 }
