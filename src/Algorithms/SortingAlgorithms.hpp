@@ -149,8 +149,27 @@ namespace algorithms
         quickSort(items, 0, items.size() - 1);
     }
 
+    // pseudocode source: https://en.wikipedia.org/wiki/Insertion_sort
     template <typename T>
-    void bucketSort(std::vector<T>& items)
+    void insertionSort(std::vector<T>& items)
+    {
+        for (uint i = 1; i < items.size(); ++i)
+        {
+            T temp = items[i];
+            int j = i - 1;
+
+            while (j >= 0 && items[j] > temp)
+            {
+                items[j + 1] = items[j];
+                --j;
+            }
+
+            items[j + 1] = temp;
+        }
+    }
+
+    template <typename T>
+    void bucketSort(std::vector<T>& items, uint level = 0)
     {
     }
 }
