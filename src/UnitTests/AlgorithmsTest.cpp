@@ -4,108 +4,192 @@
 
 #include "./Algorithms/SortingAlgorithms.hpp"
 #include "./Algorithms/SearchAlgorithms.hpp"
+#include "./DataStructures/UnionFind.hpp"
 
 using namespace std;
+using namespace datastructures;
+using namespace algorithms;
 
-TEST_CASE("Cycle Detection", "Combinatorial Algorithms")
+TEST_CASE("Combinatorial Algorithms")
 {
-    SECTION("Floyd's Algorithm")
+    SECTION("Cycle Detection")
     {
-        // TODO:
-    }
+        SECTION("Floyd's Algorithm")
+        {
+            // TODO:
+        }
 
-    SECTION("Brent's Algorithm")
-    {
-        // TODO:
+        SECTION("Brent's Algorithm")
+        {
+            // TODO:
+        }
     }
 }
 
-TEST_CASE("Graph Searching", "Graph Algorithms")
+TEST_CASE("Graph Algorithms")
 {
-    SECTION("BFS Algorithm")
+    SECTION("Graph Searching")
     {
-        // TODO:
-    }
+        SECTION("BFS Algorithm")
+        {
+            // TODO:
+        }
 
-    SECTION("DFS Algorithm")
-    {
-        // TODO:
+        SECTION("DFS Algorithm")
+        {
+            // TODO:
+        }
     }
 }
 
-TEST_CASE("Data Sorting", "Sorting Algorithms")
+TEST_CASE("Sorting Algorithms")
 {
-    SECTION("Selection Sort")
+    SECTION("Data Sorting")
     {
-        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
+        SECTION("Selection Sort")
+        {
+            vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+            vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-        algorithms::selectionSort(items);
+            selectionSort(items);
 
-        REQUIRE(items == expected);
-    }
+            REQUIRE(items == expected);
+        }
 
-    SECTION("Heap Sort")
-    {
-        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
+        SECTION("Heap Sort")
+        {
+            vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+            vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-        algorithms::heapSort(items);
+            heapSort(items);
 
-        REQUIRE(items == expected);
-    }
+            REQUIRE(items == expected);
+        }
 
-    SECTION("Merge Sort")
-    {
-        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
+        SECTION("Merge Sort")
+        {
+            vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+            vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-        algorithms::mergeSort(items);
+            mergeSort(items);
 
-        REQUIRE(items == expected);
-    }
+            REQUIRE(items == expected);
+        }
 
-    SECTION("Quick Sort")
-    {
-        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
+        SECTION("Quick Sort")
+        {
+            vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+            vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-        algorithms::quickSort(items);
+            quickSort(items);
 
-        REQUIRE(items == expected);
-    }
+            REQUIRE(items == expected);
+        }
 
-    SECTION("Insertion Sort")
-    {
-        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-        vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
+        SECTION("Insertion Sort")
+        {
+            vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+            vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-        algorithms::insertionSort(items);
+            insertionSort(items);
 
-        REQUIRE(items == expected);
+            REQUIRE(items == expected);
+        }
     }
 }
 
-TEST_CASE("Data Searching", "Search Algorithms")
+TEST_CASE("Search Algorithms")
 {
-    SECTION("Linear Search")
+    SECTION("Data Searching")
     {
-        vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
+        SECTION("Linear Search")
+        {
+            vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
 
-        vector<int>::iterator it = algorithms::linearSearch(items.begin(), items.end(), -1);
+            vector<int>::iterator it = linearSearch(items.begin(), items.end(), -1);
 
-        REQUIRE(it != items.end());
-        REQUIRE(*it == -1);
+            REQUIRE(it != items.end());
+            REQUIRE(*it == -1);
+        }
+
+        SECTION("Binary Search")
+        {
+            vector<int> items = { -1, 3, 3, 5, 6, 24, 24 };
+
+            vector<int>::iterator it = binarySearch(items.begin(), items.end(), 24);
+            REQUIRE(*it == 24);
+
+            it = binarySearch(items.begin(), items.end(), 2);
+            REQUIRE(it == items.end());
+        }
     }
+}
 
-    SECTION("Binary Search")
+TEST_CASE("Data Structures")
+{
+    SECTION("Union Find")
     {
-        vector<int> items = { -1, 3, 3, 5, 6, 24, 24 };
+        SECTION("Quick Find")
+        {
+            QuickFindUF unionFind(10);
 
-        vector<int>::iterator it = algorithms::binarySearch(items.begin(), items.end(), 24);
-        REQUIRE(*it == 24);
+            unionFind.connect(0, 1);
+            unionFind.connect(7, 8);
+            unionFind.connect(5, 9);
 
-        it = algorithms::binarySearch(items.begin(), items.end(), 2);
-        REQUIRE(it == items.end());
+            REQUIRE(true == unionFind.connected(5, 9));
+            REQUIRE(false == unionFind.connected(5, 7));
+
+            unionFind.connect(2, 6);
+            unionFind.connect(3, 4);
+            unionFind.connect(4, 8);
+            unionFind.connect(8, 9);
+
+            REQUIRE(true == unionFind.connected(3, 9));
+            REQUIRE(true == unionFind.connected(3, 7));
+            REQUIRE(false == unionFind.connected(1, 7));
+        }
+
+        SECTION("Quick Union")
+        {
+            QuickUnionUF unionFind(10);
+
+            unionFind.connect(0, 1);
+            unionFind.connect(7, 8);
+            unionFind.connect(5, 9);
+
+            REQUIRE(true == unionFind.connected(5, 9));
+            REQUIRE(false == unionFind.connected(5, 7));
+
+            unionFind.connect(2, 6);
+            unionFind.connect(3, 4);
+            unionFind.connect(4, 8);
+            unionFind.connect(8, 9);
+
+            REQUIRE(true == unionFind.connected(3, 9));
+            REQUIRE(true == unionFind.connected(3, 7));
+            REQUIRE(false == unionFind.connected(1, 7));
+        }
+
+        SECTION("WeightedUF")
+        {
+            WeightedUF unionFind(10);
+
+            unionFind.connect(0, 1);
+            unionFind.connect(7, 8);
+            unionFind.connect(5, 9);
+
+            REQUIRE(true == unionFind.connected(5, 9));
+            REQUIRE(false == unionFind.connected(5, 7));
+
+            unionFind.connect(2, 6);
+            unionFind.connect(3, 4);
+            unionFind.connect(4, 8);
+            unionFind.connect(8, 9);
+
+            REQUIRE(true == unionFind.connected(3, 9));
+            REQUIRE(true == unionFind.connected(3, 7));
+            REQUIRE(false == unionFind.connected(1, 7));
+        }
     }
 }
