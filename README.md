@@ -1,2 +1,2 @@
 # algorithms
-C++ Implementations of Wikipedia's List of Algorithms
+C++ Implementations of Wikipedia's List of Algorithms and More :)
