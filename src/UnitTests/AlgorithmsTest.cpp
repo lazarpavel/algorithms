@@ -1,7 +1,7 @@
 #include "catch.hpp"
 
-#include "./Algorithms/SortingAlgorithms.hpp"
-#include "./Algorithms/SearchAlgorithms.hpp"
+#include "Algorithms/SortingAlgorithms.hpp"
+#include "Algorithms/SearchAlgorithms.hpp"
 
 using namespace std;
 using namespace algorithms;

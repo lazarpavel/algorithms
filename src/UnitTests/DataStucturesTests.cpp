@@ -1,6 +1,6 @@
 #include "catch.hpp"
 
-#include "./DataStructures/UnionFind.h"
+#include "DataStructures/UnionFind.h"
 
 using namespace datastructures;
 
