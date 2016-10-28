@@ -5,8 +5,11 @@ CXX=g++
 CXXFLAGS=-g -std=c++11 -Wall -pedantic -m64
 LD_FLAGS = $(lib)
 
+CPP_APP_FILES := $(wildcard Applications/*.cpp)
+OBJ_APP_FILES := $(addprefix ../obj/,$(notdir $(CPP_APP_FILES:.cpp=.o)))
+
 CPP_DATASTRUCTURES_FILES := $(wildcard DataStructures/*.cpp)
-OBJ_DATASTRUCTURES_FILES := $(addprefix ../obj/,$(notdir $(CPP_ALGORITHMS_FILES:.cpp=.o)))
+OBJ_DATASTRUCTURES_FILES := $(addprefix ../obj/,$(notdir $(CPP_DATASTRUCTURES_FILES:.cpp=.o)))
 
 CPP_ALGORITHMS_FILES := $(wildcard Algorithms/*.cpp)
 OBJ_ALGORITHMS_FILES := $(addprefix ../obj/,$(notdir $(CPP_ALGORITHMS_FILES:.cpp=.o)))
@@ -28,7 +31,7 @@ run_tests:
 ../obj/%.o: */%.cpp
 	$(CXX) $(CXXFLAGS) $(inc) -c -o $@ $<
 
-../bin/test/UnitTests: $(OBJ_UNIT_TEST_FILES) $(OBJ_ALGORITHMS_FILES) $(OBJ_DATASTRUCTURES_FILES)
+../bin/test/UnitTests: $(OBJ_UNIT_TEST_FILES) $(OBJ_ALGORITHMS_FILES) $(OBJ_DATASTRUCTURES_FILES) $(OBJ_APP_FILES)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LD_FLAGS)
 
 clean:
