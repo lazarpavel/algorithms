@@ -32,7 +32,7 @@ namespace algorithms
                 if (!visited[node])
                 {
                     distance[node] = distance[current] + 1;
-                    parants[node] = current;
+                    parents[node] = current;
                     visited[node] = true;
 
                     queue.push(n);
@@ -65,7 +65,7 @@ namespace algorithms
                 if (!visited[node])
                 {
                     distance[node] = distance[current] + 1;
-                    parants[node] = current;
+                    parents[node] = current;
                     visited[node] = true;
 
                     stack.push(n);
