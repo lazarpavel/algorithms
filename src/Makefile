@@ -2,7 +2,7 @@ inc = -I. -I../external/catch/include
 lib = -L.
 
 CXX=g++
-CXXFLAGS=-g -std=c++11 -Wall -pedantic -m64
+CXXFLAGS=-g -std=c++17 -Wall -pedantic -m64
 LD_FLAGS = $(lib)
 
 CPP_APP_FILES := $(wildcard Applications/*.cpp)
