@@ -102,7 +102,7 @@ TEST_CASE("Search Algorithms")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
 
-            vector<int>::iterator it = linear_search(items.begin(), items.end(), -1);
+            vector<int>::iterator it = algorithms::linear_search(items.begin(), items.end(), -1);
 
             REQUIRE(it != items.end());
             REQUIRE(*it == -1);
@@ -112,10 +112,10 @@ TEST_CASE("Search Algorithms")
         {
             vector<int> items = { -1, 3, 3, 5, 6, 24, 24 };
 
-            vector<int>::iterator it = binary_search(items.begin(), items.end(), 24);
+            vector<int>::iterator it = algorithms::binary_search(items.begin(), items.end(), 24);
             REQUIRE(*it == 24);
 
-            it = binary_search(items.begin(), items.end(), 2);
+            it = algorithms::binary_search(items.begin(), items.end(), 2);
             REQUIRE(it == items.end());
         }
     }
