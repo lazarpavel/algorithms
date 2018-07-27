@@ -7,7 +7,7 @@ using namespace datastructures;
 namespace algorithms
 {
     template <typename Iterator, typename T>
-    Iterator linearSearch(Iterator it, Iterator end, const T& value)
+    Iterator linear_search(Iterator it, Iterator end, const T& value)
     {
         for(; it != end; ++it)
         {
@@ -19,7 +19,7 @@ namespace algorithms
     }
 
     template <typename Iterator, typename T>
-    Iterator binarySearch(Iterator begin, Iterator end, const T& value)
+    Iterator binary_search(Iterator begin, Iterator end, const T& value)
     {
         Iterator fst = begin;
         Iterator lst = end;

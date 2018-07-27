@@ -5,14 +5,14 @@
 #include <utility>
 #include <memory>
 
-#include "../DataStructures/Heap.hpp"
+#include "../data_structures/heap.hpp"
 
 using namespace datastructures;
 
 namespace algorithms
 {
     template <typename T>
-    uint findMinIndex(std::vector<T>& items, uint startIdx)
+    uint find_min_index(std::vector<T>& items, uint startIdx)
     {
         uint minIdx = startIdx;
 
@@ -27,18 +27,18 @@ namespace algorithms
 
     // Time: O(n^2)
     template <typename T>
-    void selectionSort(std::vector<T>& items)
+    void selection_sort(std::vector<T>& items)
     {
         for (uint i = 0; i < items.size(); ++i)
         {
-            uint minIdx = findMinIndex(items, i);
+            uint minIdx = find_min_index(items, i);
             std::swap(items[i], items[minIdx]);
         }
     }
 
     // Time: O(n * log n)
     template <typename T>
-    void heapSort(std::vector<T>& items)
+    void heap_sort(std::vector<T>& items)
     {
         std::shared_ptr<MinHeap<T>> minHeap = std::make_shared<MinHeap<T>>(items);
 
@@ -89,14 +89,14 @@ namespace algorithms
 
     // source: The Algorithm Design Manual by Steven S. Skiena
     template <typename T>
-    void mergeSort(std::vector<T>& items, uint low, uint high)
+    void merge_sort(std::vector<T>& items, uint low, uint high)
     {
         if (low < high)
         {
             uint middle = (low + high) / 2;
 
-            mergeSort(items, low, middle);
-            mergeSort(items, middle + 1, high);
+            merge_sort(items, low, middle);
+            merge_sort(items, middle + 1, high);
 
             merge(items, low, middle, high);
         }
@@ -104,9 +104,9 @@ namespace algorithms
 
     // Time: O(n * log n)
     template <typename T>
-    void mergeSort(std::vector<T>& items)
+    void merge_sort(std::vector<T>& items)
     {
-        mergeSort(items, 0, items.size() - 1);
+        merge_sort(items, 0, items.size() - 1);
     }
 
     // source: The Algorithm Design Manual by Steven S. Skiena
@@ -131,22 +131,22 @@ namespace algorithms
 
     // source: The Algorithm Design Manual by Steven S. Skiena
     template <typename T>
-    void quickSort(std::vector<T>& items, uint low, uint high)
+    void quick_sort(std::vector<T>& items, uint low, uint high)
     {
         if (low < high)
         {
             uint pivot = partition(items, low, high);
 
-            quickSort(items, low, pivot - 1);
-            quickSort(items, pivot + 1, high);
+            quick_sort(items, low, pivot - 1);
+            quick_sort(items, pivot + 1, high);
         }
     }
 
     // Time: O(n * log n) -> O(n ^ 2) - Worst Case
     template <typename T>
-    void quickSort(std::vector<T>& items)
+    void quick_sort(std::vector<T>& items)
     {
-        quickSort(items, 0, items.size() - 1);
+        quick_sort(items, 0, items.size() - 1);
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Insertion_sort
@@ -169,7 +169,7 @@ namespace algorithms
     }
 
     template <typename T>
-    void bucketSort(std::vector<T>& items, uint level = 0)
+    void bucket_sort(std::vector<T>& items, uint level = 0)
     {
     }
 }

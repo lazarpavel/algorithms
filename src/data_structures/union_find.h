@@ -6,10 +6,10 @@
 namespace datastructures
 {
     // source: Algorithms, 4th ed. [Sedgewick, Wayne].pdf
-    class QuickFindUF
+    class quick_find_uf
     {
     public:
-        QuickFindUF(const uint size);
+        quick_find_uf(const uint size);
 
     public:
         void connect(const uint, const uint);
@@ -20,10 +20,10 @@ namespace datastructures
     };
 
     // source: Algorithms, 4th ed. [Sedgewick, Wayne].pdf
-    class QuickUnionUF
+    class quick_union_uf
     {
     public:
-        QuickUnionUF(const uint size);
+        quick_union_uf(const uint size);
 
     public:
         void connect(const uint, const uint);
@@ -38,10 +38,10 @@ namespace datastructures
 
     // source: Algorithms, 4th ed. [Sedgewick, Wayne].pdf
     // with path compression
-    class WeightedUF
+    class weighted_uf
     {
     public:
-        WeightedUF(const uint size);
+        weighted_uf(const uint size);
 
     public:
         void connect(const uint, const uint);

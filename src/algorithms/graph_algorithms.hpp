@@ -4,18 +4,18 @@
 #include <queue>
 #include <stack>
 
-#include "UGraph.hpp"
+#include "ugraph.hpp"
 
 namespace algorithms
 {
     // pseudocode source: https://en.wikipedia.org/wiki/Breadth-first_search
-    void bfs(shared_ptr<UGraph> graph, uint startVertex)
+    void bfs(shared_ptr<ugraph> graph, uint startVertex)
     {
         std::queue queue;
 
-        std::vector<bool> visited (graph->getVerticesCount(), false);
-        std::vector<uint> distance (graph->getVerticesCount(), 0);
-        std::vector<uint> parents (graph->getVerticesCount(), 0);
+        std::vector<bool> visited (graph->get_vertices_count(), false);
+        std::vector<uint> distance (graph->get_vertices_count(), 0);
+        std::vector<uint> parents (graph->get_vertices_count(), 0);
 
         visited[startVertex] = true;
         distance[startVertex] = 0;
@@ -25,7 +25,7 @@ namespace algorithms
         while (!queue.empty())
         {
             uint current = queue.pop();
-            auto adjacents = graph->getAdjacents(current);
+            auto adjacents = graph->get_adjacents(current);
 
             for (auto node : adjacents)
             {
@@ -42,13 +42,13 @@ namespace algorithms
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Depth-first_search
-    void dfs(shared_ptr<UGraph> graph, uint startVertex)
+    void dfs(shared_ptr<ugraph> graph, uint startVertex)
     {
         std::stack stack;
 
-        std::vector<bool> visited (graph->getVerticesCount(), false);
-        std::vector<uint> distance (graph->getVerticesCount(), 0);
-        std::vector<uint> parents (graph->getVerticesCount(), 0);
+        std::vector<bool> visited (graph->get_vertices_count(), false);
+        std::vector<uint> distance (graph->get_vertices_count(), 0);
+        std::vector<uint> parents (graph->get_vertices_count(), 0);
 
         visited[startVertex] = true;
         distance[startVertex] = 0;
@@ -58,7 +58,7 @@ namespace algorithms
         while (!stack.empty())
         {
             uint current = stack.pop();
-            auto adjacents = graph->getAdjacents(current);
+            auto adjacents = graph->get_adjacents(current);
 
             for (auto node : adjacents)
             {

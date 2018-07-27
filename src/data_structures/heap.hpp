@@ -8,10 +8,10 @@ namespace datastructures
     // source: Elements of Programming Interviews - The Insiders Guide by Adnan Aziz, Tsung - Hsien Lee, Amit Prakash
     //
     template <typename T>
-    class Heap
+    class heap
     {
     public:
-        Heap(std::vector<T> items);
+        heap(std::vector<T> items);
 
     public:
         virtual T get() const;
@@ -22,12 +22,12 @@ namespace datastructures
     protected:
         virtual bool compare(const T& lhs, const T& rhs) const = 0;
 
-        uint getParentIndex(uint idx);
-        uint getLeftChildIndex(uint idx);
-        uint getRightChildIndex(uint idx);
+        uint get_parent_index(uint idx);
+        uint get_left_child_index(uint idx);
+        uint get_right_child_index(uint idx);
 
-        void shiftUp();
-        void shiftDown(uint index);
+        void shift_up();
+        void shift_down(uint index);
         void swap(uint lhs, uint rhs);
 
     protected:
@@ -36,14 +36,14 @@ namespace datastructures
     };
 
     template <typename T>
-    Heap<T>::Heap(std::vector<T> items)
+    heap<T>::heap(std::vector<T> items)
     {
         m_items.resize(items.size());
         m_position = 0;
     }
 
     template <typename T>
-    void Heap<T>::print() const
+    void heap<T>::print() const
     {
         for (uint i = 0; i < m_items.size(); ++i)
             std::cout << m_items[i] << " ";
@@ -52,7 +52,7 @@ namespace datastructures
     }
 
     template <typename T>
-    void Heap<T>::insert(const T& value)
+    void heap<T>::insert(const T& value)
     {
         if (m_position == 0)
         {
@@ -64,12 +64,12 @@ namespace datastructures
             m_items[m_position] = value;
             ++m_position;
 
-            shiftUp();
+            shift_up();
         }
     }
 
     template<typename T>
-    void Heap<T>::shiftUp()
+    void heap<T>::shift_up()
     {
         uint tmp = m_position - 1;
         while(tmp > 1 && compare(m_items[tmp / 2], m_items[tmp]))
@@ -80,19 +80,19 @@ namespace datastructures
     }
 
     template<typename T>
-    T Heap<T>::extract()
+    T heap<T>::extract()
     {
         T min = m_items[1];
 
         m_items[1] = m_items[--m_position];
 
-        shiftDown(1);
+        shift_down(1);
 
         return min;
     }
 
     template<typename T>
-    void Heap<T>::shiftDown(uint index)
+    void heap<T>::shift_down(uint index)
     {
         T tmp = m_items[index];
         uint heapIdx = index;
@@ -106,12 +106,12 @@ namespace datastructures
         if (heapIdx != index)
         {
             swap(index, heapIdx);
-            shiftDown(heapIdx);
+            shift_down(heapIdx);
         }
     }
 
     template<typename T>
-    void Heap<T>::swap(uint lhs, uint rhs)
+    void heap<T>::swap(uint lhs, uint rhs)
     {
         T temp = m_items[lhs];
 
@@ -120,13 +120,13 @@ namespace datastructures
     }
 
     template <typename T>
-    T Heap<T>::get() const
+    T heap<T>::get() const
     {
         return m_items[1];
     }
 
     template <typename T>
-    uint Heap<T>::getParentIndex(uint idx)
+    uint heap<T>::get_parent_index(uint idx)
     {
         if (idx == 1)
             return -1;
@@ -135,19 +135,19 @@ namespace datastructures
     }
 
     template <typename T>
-    uint Heap<T>::getLeftChildIndex(uint idx)
+    uint heap<T>::get_left_child_index(uint idx)
     {
         return 2 * idx;
     }
 
     template <typename T>
-    uint Heap<T>::getRightChildIndex(uint idx)
+    uint heap<T>::get_right_child_index(uint idx)
     {
         return (2 * idx) + 1;
     }
 
     template <typename T>
-    class MinHeap : public Heap<T>
+    class MinHeap : public heap<T>
     {
     public:
         MinHeap(std::vector<T> items);
@@ -158,7 +158,7 @@ namespace datastructures
 
     template <typename T>
     MinHeap<T>::MinHeap(std::vector<T> items)
-        : Heap<T>::Heap(items)
+        : heap<T>::heap(items)
     {
         for (uint it = 0; it < items.size(); ++it)
             this->insert(items[it]);
@@ -171,7 +171,7 @@ namespace datastructures
     }
 
     template <typename T>
-    class MaxHeap : public Heap<T>
+    class MaxHeap : public heap<T>
     {
     public:
         MaxHeap(std::vector<T> items);
@@ -182,7 +182,7 @@ namespace datastructures
 
     template <typename T>
     MaxHeap<T>::MaxHeap(std::vector<T> items)
-        : Heap<T>::Heap(items)
+        : heap<T>::heap(items)
     {
         for (uint it = 0; it < items.size(); ++it)
             this->insert(items[it]);

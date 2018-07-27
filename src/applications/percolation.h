@@ -6,28 +6,28 @@
 #include <iostream>
 #include <exception>
 
-#include "../DataStructures/UnionFind.h"
+#include "../data_structures/union_find.h"
 
 using namespace datastructures;
 
 namespace applications
 {
-    class Percolation
+    class percolation
     {
     public:
-        Percolation(const uint n);
+        percolation(const uint n);
 
     public:
         void open(uint row, uint col);
-        bool isOpen(uint row, uint col) const;
-        bool isFull(uint row, uint col) const;
+        bool is_open(uint row, uint col) const;
+        bool is_full(uint row, uint col) const;
         bool percolates() const;
 
     private:
         std::vector<std::vector<bool>> m_maze;
         uint m_size;
 
-        std::shared_ptr<WeightedUF> checkPercolatesUF;
-        std::shared_ptr<WeightedUF> checkFullUF;
+        std::shared_ptr<weighted_uf> check_percolates_uf;
+        std::shared_ptr<weighted_uf> check_full_uf;
     };
 }

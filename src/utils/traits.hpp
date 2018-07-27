@@ -33,5 +33,5 @@ struct has_begin_end
 
 // check if a givet type is a stl container
 template <typename T>
-struct isContainer : std::integral_constant<bool, has_const_iterator<T>::value && has_begin_end<T>::beg_value && has_begin_end<T>::end_value> { };
+struct is_container : std::integral_constant<bool, has_const_iterator<T>::value && has_begin_end<T>::beg_value && has_begin_end<T>::end_value> { };
 

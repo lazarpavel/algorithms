@@ -6,7 +6,7 @@ namespace algorithms
 {
     // pseudocode source: https://en.wikipedia.org/wiki/Cycle_detection
     template <typename T>
-    std::pair<uint, uint> detectCycleFloyd(T (*f)(T& data), T& data)
+    std::pair<uint, uint> detect_cycle_floyd(T (*f)(T& data), T& data)
     {
         // Main phase of algorithm: finding a repetition x_i = x_2i.
         // The fast moves twice as quickly as the slow and
@@ -32,8 +32,8 @@ namespace algorithms
         // distance between them is constant at 2V, a multiple of λ,
         // they will agree as soon as the slow reaches index μ.
 
-        // Find the position startCycle of first repetition.
-        uint startCycle = 0;
+        // Find the position start_cycle of first repetition.
+        uint start_cycle = 0;
         slow = data;
 
         while (slow != fast)
@@ -41,53 +41,53 @@ namespace algorithms
             slow = f(slow);
             fast = f(fast);
 
-            ++startCycle;
+            ++start_cycle;
         }
 
         // Find the length of the shortest cycle starting from x_μ
         // The fast moves one step at a time while slow is still.
-        // endCycle is incremented until λ is found.
+        // end_cycle is incremented until λ is found.
 
-        uint endCycle = 1;
+        uint end_cycle = 1;
         fast = f(slow);
 
         while (fast != slow)
         {
             fast = f(fast);
-            ++endCycle;
+            ++end_cycle;
         }
 
-        return std::make_pair<uint, uint>(startCycle, endCycle);
+        return std::make_pair<uint, uint>(start_cycle, end_cycle);
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Cycle_detection
     template <typename T>
-    std::pair<uint, uint> detectCycleBrent(T (*f)(T& data), T& data)
+    std::pair<uint, uint> detect_cycle_brent(T (*f)(T& data), T& data)
     {
         uint power = 1;
-        uint endCycle = 1;
+        uint end_cycle = 1;
 
         T slow = data;
         T fast = f(data);
 
         while (fast != slow)
         {
-            if (power == endCycle)
+            if (power == end_cycle)
             {
                 slow = fast;
                 power = power << 1;
-                endCycle = 0;
+                end_cycle = 0;
             }
 
             fast = f(fast);
-            ++endCycle;
+            ++end_cycle;
         }
 
-        uint startCycle = 0;
+        uint start_cycle = 0;
         slow = data;
         fast = data;
 
-        for (uint it = 0; it < endCycle; ++it)
+        for (uint it = 0; it < end_cycle; ++it)
             fast = f(fast);
 
         while (fast != slow)
@@ -95,9 +95,9 @@ namespace algorithms
             slow = f(slow);
             fast = f(fast);
 
-            ++startCycle;
+            ++start_cycle;
         }
 
-        return std::make_pair<uint, uint>(startCycle, endCycle);
+        return std::make_pair<uint, uint>(start_cycle, end_cycle);
     }
 }

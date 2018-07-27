@@ -1,7 +1,7 @@
 #include "catch.hpp"
 
-#include "Algorithms/SortingAlgorithms.hpp"
-#include "Algorithms/SearchAlgorithms.hpp"
+#include "algorithms/sorting_algorithms.hpp"
+#include "algorithms/search_algorithms.hpp"
 
 using namespace std;
 using namespace algorithms;
@@ -47,7 +47,7 @@ TEST_CASE("Sorting Algorithms")
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-            selectionSort(items);
+            selection_sort(items);
 
             REQUIRE(items == expected);
         }
@@ -57,7 +57,7 @@ TEST_CASE("Sorting Algorithms")
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-            heapSort(items);
+            heap_sort(items);
 
             REQUIRE(items == expected);
         }
@@ -67,7 +67,7 @@ TEST_CASE("Sorting Algorithms")
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-            mergeSort(items);
+            merge_sort(items);
 
             REQUIRE(items == expected);
         }
@@ -77,7 +77,7 @@ TEST_CASE("Sorting Algorithms")
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-            quickSort(items);
+            quick_sort(items);
 
             REQUIRE(items == expected);
         }
@@ -102,7 +102,7 @@ TEST_CASE("Search Algorithms")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
 
-            vector<int>::iterator it = linearSearch(items.begin(), items.end(), -1);
+            vector<int>::iterator it = linear_search(items.begin(), items.end(), -1);
 
             REQUIRE(it != items.end());
             REQUIRE(*it == -1);
@@ -112,10 +112,10 @@ TEST_CASE("Search Algorithms")
         {
             vector<int> items = { -1, 3, 3, 5, 6, 24, 24 };
 
-            vector<int>::iterator it = binarySearch(items.begin(), items.end(), 24);
+            vector<int>::iterator it = binary_search(items.begin(), items.end(), 24);
             REQUIRE(*it == 24);
 
-            it = binarySearch(items.begin(), items.end(), 2);
+            it = binary_search(items.begin(), items.end(), 2);
             REQUIRE(it == items.end());
         }
     }
