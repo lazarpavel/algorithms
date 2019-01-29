@@ -6,43 +6,43 @@
 using namespace std;
 using namespace algorithms;
 
-TEST_CASE("Combinatorial Algorithms")
+TEST_CASE("combinatorial algorithms")
 {
-    SECTION("Cycle Detection")
+    SECTION("cycle detection")
     {
-        SECTION("Floyd's Algorithm")
+        SECTION("Floyd's algorithm")
         {
             // TODO:
         }
 
-        SECTION("Brent's Algorithm")
+        SECTION("Brent's algorithm")
         {
             // TODO:
         }
     }
 }
 
-TEST_CASE("Graph Algorithms")
+TEST_CASE("graph algorithms")
 {
-    SECTION("Graph Searching")
+    SECTION("graph searching")
     {
-        SECTION("BFS Algorithm")
+        SECTION("BFS algorithm")
         {
             // TODO:
         }
 
-        SECTION("DFS Algorithm")
+        SECTION("DFS algorithm")
         {
             // TODO:
         }
     }
 }
 
-TEST_CASE("Sorting Algorithms")
+TEST_CASE("sorting algorithms")
 {
-    SECTION("Data Sorting")
+    SECTION("data sorting")
     {
-        SECTION("Selection Sort")
+        SECTION("selection sort")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
@@ -52,7 +52,7 @@ TEST_CASE("Sorting Algorithms")
             REQUIRE(items == expected);
         }
 
-        SECTION("Heap Sort")
+        SECTION("heap sort")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
@@ -62,7 +62,7 @@ TEST_CASE("Sorting Algorithms")
             REQUIRE(items == expected);
         }
 
-        SECTION("Merge Sort")
+        SECTION("merge sort")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
@@ -72,7 +72,7 @@ TEST_CASE("Sorting Algorithms")
             REQUIRE(items == expected);
         }
 
-        SECTION("Quick Sort")
+        SECTION("quick sort")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
@@ -82,7 +82,7 @@ TEST_CASE("Sorting Algorithms")
             REQUIRE(items == expected);
         }
 
-        SECTION("Insertion Sort")
+        SECTION("insertion sort")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };

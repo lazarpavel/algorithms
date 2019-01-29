@@ -147,17 +147,17 @@ namespace datastructures
     }
 
     template <typename T>
-    class MinHeap : public heap<T>
+    class min_heap : public heap<T>
     {
     public:
-        MinHeap(std::vector<T> items);
+        min_heap(std::vector<T> items);
 
     protected:
         virtual bool compare(const T& lhs, const T& rhs) const;
     };
 
     template <typename T>
-    MinHeap<T>::MinHeap(std::vector<T> items)
+    min_heap<T>::min_heap(std::vector<T> items)
         : heap<T>::heap(items)
     {
         for (uint it = 0; it < items.size(); ++it)
@@ -165,23 +165,23 @@ namespace datastructures
     }
 
     template <typename T>
-    bool MinHeap<T>::compare(const T& lhs, const T& rhs) const
+    bool min_heap<T>::compare(const T& lhs, const T& rhs) const
     {
         return lhs > rhs;
     }
 
     template <typename T>
-    class MaxHeap : public heap<T>
+    class max_heap : public heap<T>
     {
     public:
-        MaxHeap(std::vector<T> items);
+        max_heap(std::vector<T> items);
 
     protected:
         virtual bool compare(const T& lhs, const T& rhs) const;
     };
 
     template <typename T>
-    MaxHeap<T>::MaxHeap(std::vector<T> items)
+    max_heap<T>::max_heap(std::vector<T> items)
         : heap<T>::heap(items)
     {
         for (uint it = 0; it < items.size(); ++it)
@@ -189,7 +189,7 @@ namespace datastructures
     }
 
     template <typename T>
-    bool MaxHeap<T>::compare(const T& lhs, const T& rhs) const
+    bool max_heap<T>::compare(const T& lhs, const T& rhs) const
     {
         return lhs < rhs;
     }

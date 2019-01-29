@@ -4,9 +4,9 @@
 
 using namespace datastructures;
 
-TEST_CASE("Union Find")
+TEST_CASE("union find")
 {
-    SECTION("Quick Find")
+    SECTION("quick find")
     {
         quick_find_uf union_find(10);
 
@@ -27,7 +27,7 @@ TEST_CASE("Union Find")
         REQUIRE(false == union_find.connected(1, 7));
     }
 
-    SECTION("Quick Union")
+    SECTION("quick union")
     {
         quick_union_uf union_find(10);
 
@@ -48,7 +48,7 @@ TEST_CASE("Union Find")
         REQUIRE(false == union_find.connected(1, 7));
     }
 
-    SECTION("weighted_uf")
+    SECTION("weighted union find")
     {
         weighted_uf union_find(10);
 

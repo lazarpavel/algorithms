@@ -16,7 +16,7 @@ namespace datastructures
 
     public:
         // add an edge between vertices v and w
-        void addEdge(uint v, uint w);
+        void add_edge(uint v, uint w);
 
         // return vertices adjacents to vertex v
         std::set<uint> get_adjacents(uint v) const;
@@ -37,7 +37,7 @@ namespace datastructures
         m_edges_count = 0;
     }
 
-    void ugraph::addEdge(uint v, uint w)
+    void ugraph::add_edge(uint v, uint w)
     {
         if (v >= m_vertices_count)
             throw new std::out_of_range("Invalid vertex index: " + std::to_string(v));

@@ -40,10 +40,10 @@ namespace algorithms
     template <typename T>
     void heap_sort(std::vector<T>& items)
     {
-        std::shared_ptr<MinHeap<T>> minHeap = std::make_shared<MinHeap<T>>(items);
+        std::shared_ptr<min_heap<T>> heap = std::make_shared<min_heap<T>>(items);
 
         for (uint i = 0; i < items.size(); ++i)
-            items[i] = minHeap->extract();
+            items[i] = heap->extract();
     }
 
     // source: The Algorithm Design Manual by Steven S. Skiena

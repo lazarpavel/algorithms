@@ -7,7 +7,7 @@ using namespace applications;
 
 TEST_CASE("percolation")
 {
-    SECTION("percolation Stats - Small")
+    SECTION("percolation stats - small")
     {
         percolation_stats percolation_stats(100, 100);
 
@@ -17,7 +17,7 @@ TEST_CASE("percolation")
         REQUIRE((percolation_stats.confidence_lo() <= percolation_stats.mean()) == true);
     }
 
-    SECTION("percolation Stats - Medium")
+    SECTION("percolation stats - medium")
     {
         percolation_stats percolation_stats(200, 200);
 
@@ -27,7 +27,7 @@ TEST_CASE("percolation")
         REQUIRE((percolation_stats.confidence_lo() <= percolation_stats.mean()) == true);
     }
 
-    SECTION("percolation Stats - Large")
+    SECTION("percolation stats - large")
     {
         percolation_stats percolation_stats(400, 200);
 
