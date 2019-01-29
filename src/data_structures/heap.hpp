@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace datastructures
+namespace data_structures
 {
     //
     // source: Elements of Programming Interviews - The Insiders Guide by Adnan Aziz, Tsung - Hsien Lee, Amit Prakash

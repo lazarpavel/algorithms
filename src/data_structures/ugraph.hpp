@@ -3,7 +3,7 @@
 #include <vector>
 #include <exception>
 
-namespace datastructures
+namespace data_structures
 {
     //
     // UnDirected Graph API

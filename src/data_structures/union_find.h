@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-namespace datastructures
+namespace data_structures
 {
     // source: Algorithms, 4th ed. [Sedgewick, Wayne].pdf
     class quick_find_uf

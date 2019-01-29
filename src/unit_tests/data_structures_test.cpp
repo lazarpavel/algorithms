@@ -2,7 +2,7 @@
 
 #include "data_structures/union_find.h"
 
-using namespace datastructures;
+using namespace data_structures;
 
 TEST_CASE("union find")
 {

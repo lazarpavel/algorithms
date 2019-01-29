@@ -2,12 +2,12 @@
 
 #include <iterator>
 
-using namespace datastructures;
+using namespace data_structures;
 
 namespace algorithms
 {
-    template <typename Iterator, typename T>
-    Iterator linear_search(Iterator it, Iterator end, const T& value)
+    template <typename iterator, typename T>
+    iterator linear_search(iterator it, iterator end, const T& value)
     {
         for(; it != end; ++it)
         {
@@ -18,17 +18,17 @@ namespace algorithms
         return it;
     }
 
-    template <typename Iterator, typename T>
-    Iterator binary_search(Iterator begin, Iterator end, const T& value)
+    template <typename iterator, typename T>
+    iterator binary_search(iterator begin, iterator end, const T& value)
     {
-        Iterator fst = begin;
-        Iterator lst = end;
+        iterator fst = begin;
+        iterator lst = end;
 
         uint distance = std::distance(begin, end);
 
         while (distance > 1)
         {
-            Iterator middle = fst;
+            iterator middle = fst;
             std::advance(middle, distance / 2);
 
             if (*middle > value)

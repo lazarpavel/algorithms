@@ -87,7 +87,7 @@ TEST_CASE("sorting algorithms")
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
             vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
 
-            insertionSort(items);
+            insertion_sort(items);
 
             REQUIRE(items == expected);
         }

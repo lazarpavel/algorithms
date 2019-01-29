@@ -1,6 +1,6 @@
 #include "union_find.h"
 
-using namespace datastructures;
+using namespace data_structures;
 
 quick_find_uf::quick_find_uf(const uint size)
 {

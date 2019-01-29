@@ -7,7 +7,7 @@
 
 #include "../data_structures/heap.hpp"
 
-using namespace datastructures;
+using namespace data_structures;
 
 namespace algorithms
 {
@@ -151,7 +151,7 @@ namespace algorithms
 
     // pseudocode source: https://en.wikipedia.org/wiki/Insertion_sort
     template <typename T>
-    void insertionSort(std::vector<T>& items)
+    void insertion_sort(std::vector<T>& items)
     {
         for (uint i = 1; i < items.size(); ++i)
         {
