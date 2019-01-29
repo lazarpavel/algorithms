@@ -94,11 +94,11 @@ TEST_CASE("sorting algorithms")
     }
 }
 
-TEST_CASE("Search Algorithms")
+TEST_CASE("search algorithms")
 {
-    SECTION("Data Searching")
+    SECTION("data searching")
     {
-        SECTION("Linear Search")
+        SECTION("linear search")
         {
             vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
 
@@ -108,7 +108,7 @@ TEST_CASE("Search Algorithms")
             REQUIRE(*it == -1);
         }
 
-        SECTION("Binary Search")
+        SECTION("binary search")
         {
             vector<int> items = { -1, 3, 3, 5, 6, 24, 24 };
 
