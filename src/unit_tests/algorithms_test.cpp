@@ -120,4 +120,3 @@ TEST_CASE("search algorithms")
         }
     }
 }
-
