@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/development/workspaces/LZR.Algorithms/build",
+  "command": "/bin/g++    -g   -o CMakeFiles/algorithms.dir/algorithms.cpp.o -c /development/workspaces/LZR.Algorithms/algorithms.cpp",
+  "file": "/development/workspaces/LZR.Algorithms/algorithms.cpp"
+}
+]
