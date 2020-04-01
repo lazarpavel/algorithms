@@ -1,20 +1,18 @@
 #include <utility>
 
-#include "percolation.h"
-
-using namespace applications;
+#include "applications/percolation.h"
 
 // create n-by-n grid, with all sites blocked
-percolation::percolation(const uint n)
+applications::percolation::percolation(const uint n)
     : m_maze(n, std::vector<bool>(n, false)), m_size(n)
 {
     // add 2 elements for virtual top and virtual bottom sites
-    check_percolates_uf = std::make_shared<weighted_uf>(n * n + 2);
-    check_full_uf = std::make_shared<weighted_uf>(n * n + 1);
+    check_percolates_uf = std::make_shared<data_structures::weighted_quick_union_uf>(n * n + 2);
+    check_full_uf = std::make_shared<data_structures::weighted_quick_union_uf>(n * n + 1);
 }
 
 // open site (row, col) if it is not open already
-void percolation::open(uint row, uint col)
+void applications::percolation::open(uint row, uint col)
 {
     if (row >= m_size)
         throw std::out_of_range("row out of range");
@@ -60,7 +58,7 @@ void percolation::open(uint row, uint col)
 }
 
 // is site (row, col) open?
-bool percolation::is_open(uint row, uint col) const
+bool applications::percolation::is_open(uint row, uint col) const
 {
     if (row >= m_size)
         throw std::out_of_range("row out of range");
@@ -71,7 +69,7 @@ bool percolation::is_open(uint row, uint col) const
 }
 
 // is site (row, col) full?
-bool percolation::is_full(uint row, uint col) const
+bool applications::percolation::is_full(uint row, uint col) const
 {
     if (row >= m_size)
         throw std::out_of_range("row out of range");
@@ -83,7 +81,7 @@ bool percolation::is_full(uint row, uint col) const
 }
 
 // does the system percolate?
-bool percolation::percolates() const
+bool applications::percolation::percolates() const
 {
     return check_percolates_uf->connected(0, m_size * m_size + 1);
 }

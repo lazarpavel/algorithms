@@ -5,9 +5,7 @@
 #include <utility>
 #include <memory>
 
-#include "../data_structures/heap.hpp"
-
-using namespace data_structures;
+#include "data_structures/min_heap.h"
 
 namespace algorithms
 {
@@ -40,7 +38,7 @@ namespace algorithms
     template <typename T>
     void heap_sort(std::vector<T>& items)
     {
-        std::shared_ptr<min_heap<T>> heap = std::make_shared<min_heap<T>>(items);
+        std::shared_ptr<data_structures::min_heap<T>> heap = std::make_shared<data_structures::min_heap<T>>(items);
 
         for (uint i = 0; i < items.size(); ++i)
             items[i] = heap->extract();

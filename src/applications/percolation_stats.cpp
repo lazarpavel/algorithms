@@ -1,15 +1,13 @@
-#include "percolation_stats.h"
+#include "applications/percolation_stats.h"
 
-using namespace applications;
-
-percolation_stats::percolation_stats(const uint n, const uint trials)
+applications::percolation_stats::percolation_stats(const uint n, const uint trials)
     : m_counts(trials, 0), m_trials(trials), m_size(n)
 {
     run();
 }
 
 // perform trials independent experiments on an n-by-n grid
-void percolation_stats::run()
+void applications::percolation_stats::run()
 {
     uint consumed_trials = 0;
 
@@ -37,7 +35,7 @@ void percolation_stats::run()
 }
 
 // sample mean of percolation threshold
-double percolation_stats::mean() const
+double applications::percolation_stats::mean() const
 {
     double sum = 0;
     for (uint i = 0; i < m_counts.size(); ++ i)
@@ -47,7 +45,7 @@ double percolation_stats::mean() const
 }
 
 // sample standard deviation of percolation threshold
-double percolation_stats::standard_deviation() const
+double applications::percolation_stats::standard_deviation() const
 {
     if (m_counts.size() < 2)
         return 0;
@@ -65,13 +63,13 @@ double percolation_stats::standard_deviation() const
 }
 
 // low  endpoint of 95% confidence interval
-double percolation_stats::confidence_lo() const
+double applications::percolation_stats::confidence_lo() const
 {
     return mean() - 1.96 * standard_deviation() / sqrt(m_trials);
 }
 
 // high endpoint of 95% confidence interval
-double percolation_stats::confidence_hi() const
+double applications::percolation_stats::confidence_hi() const
 {
     return mean() + 1.96 * standard_deviation() / sqrt(m_trials);
 }

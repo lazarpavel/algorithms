@@ -2,8 +2,6 @@
 
 #include <iterator>
 
-using namespace data_structures;
-
 namespace algorithms
 {
     template <typename iterator, typename T>

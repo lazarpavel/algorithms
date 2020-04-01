@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PERCOLATION_H
+#define PERCOLATION_H
 
 #include <vector>
 #include <memory>
@@ -6,9 +7,7 @@
 #include <iostream>
 #include <exception>
 
-#include "../data_structures/union_find.h"
-
-using namespace data_structures;
+#include "data_structures/weighted_quick_union_uf.h"
 
 namespace applications
 {
@@ -27,7 +26,8 @@ namespace applications
         std::vector<std::vector<bool>> m_maze;
         uint m_size;
 
-        std::shared_ptr<weighted_uf> check_percolates_uf;
-        std::shared_ptr<weighted_uf> check_full_uf;
+        std::shared_ptr<data_structures::weighted_quick_union_uf> check_percolates_uf;
+        std::shared_ptr<data_structures::weighted_quick_union_uf> check_full_uf;
     };
 }
+#endif /* PERCOLATION_H */

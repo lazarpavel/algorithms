@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PERCOLATION_STATS_H
+#define PERCOLATION_STATS_H
 
 #include <iostream>
 #include <experimental/random>
@@ -28,3 +29,4 @@ namespace applications
         uint m_size;
     };
 }
+#endif /* PERCOLATION_STATS_H */

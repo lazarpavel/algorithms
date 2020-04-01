@@ -1,14 +1,14 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
-#include "data_structures/union_find.h"
-
-using namespace data_structures;
+#include "data_structures/quick_find_uf.h"
+#include "data_structures/quick_union_uf.h"
+#include "data_structures/weighted_quick_union_uf.h"
 
 TEST_CASE("union find")
 {
     SECTION("quick find")
     {
-        quick_find_uf union_find(10);
+        data_structures::quick_find_uf union_find(10);
 
         union_find.connect(0, 1);
         union_find.connect(7, 8);
@@ -29,7 +29,7 @@ TEST_CASE("union find")
 
     SECTION("quick union")
     {
-        quick_union_uf union_find(10);
+        data_structures::quick_union_uf union_find(10);
 
         union_find.connect(0, 1);
         union_find.connect(7, 8);
@@ -50,7 +50,7 @@ TEST_CASE("union find")
 
     SECTION("weighted union find")
     {
-        weighted_uf union_find(10);
+        data_structures::weighted_quick_union_uf union_find(10);
 
         union_find.connect(0, 1);
         union_find.connect(7, 8);

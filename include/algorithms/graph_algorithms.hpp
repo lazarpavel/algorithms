@@ -4,7 +4,7 @@
 #include <queue>
 #include <stack>
 
-#include "ugraph.hpp"
+#include "data_structures/ugraph.hpp"
 
 namespace algorithms
 {
