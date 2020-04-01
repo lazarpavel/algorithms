@@ -172,4 +172,25 @@ namespace algorithms
     void bucket_sort(std::vector<T>& items, uint level = 0)
     {
     }
+
+    void couting_sort(std::vector<unsigned int>& items, unsigned int max_value) {
+        std::vector<unsigned int> counter;
+
+        for (unsigned int i = 0; i <= max_value; ++i) {
+            counter.push_back(0);
+        }
+
+        for (size_t i = 0; i < items.size(); ++i) {
+            ++counter[items[i]];
+        }
+
+        size_t index = 0;
+        for (unsigned int i = 0; i < counter.size(); ++i) {
+            while (counter[i] > 0) {
+                items[index] = i;
+                ++index;
+                --counter[i];
+            }
+        }
+    }
 }

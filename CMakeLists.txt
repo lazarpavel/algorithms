@@ -1,11 +1,20 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(algorithms VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.16)
+
+set(PROJECT_NAME algorithms)
+set(PROJECT_DESCRIPTION "collection of algorithm implementations")
+
+project(${PROJECT_NAME} VERSION 1.0
+                        DESCRIPTION ${PROJECT_DESCRIPTION}
+                        LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_PLATFORM_INDEPENDENT_CODE ON)
 
 include(CTest)
 enable_testing()
 
-add_library(algorithms algorithms.cpp)
+include_directories(include)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_subdirectory(tests)
+add_subdirectory(src)
