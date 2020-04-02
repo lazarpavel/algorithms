@@ -49,16 +49,6 @@ TEST_CASE("sorting algorithms")
             REQUIRE(items == expected);
         }
 
-        SECTION("heap sort")
-        {
-            std::vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
-            std::vector<int> expected = { -1, 3, 3, 5, 6, 24, 24 };
-
-            algorithms::heap_sort(items);
-
-            REQUIRE(items == expected);
-        }
-
         SECTION("merge sort")
         {
             std::vector<int> items = { 3, 6, -1, 5, 24, 24, 3 };
