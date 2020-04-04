@@ -5,7 +5,7 @@
 #include <utility>
 #include <memory>
 
-#include "data_structures/min_heap.h"
+#include "data_structures/min_heap.hpp"
 
 namespace algorithms
 {

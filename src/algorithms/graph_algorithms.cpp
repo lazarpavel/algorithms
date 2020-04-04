@@ -1,7 +1,7 @@
 namespace algorithms
 {
 // pseudocode source: https://en.wikipedia.org/wiki/Breadth-first_search
-void bfs(shared_ptr<ugraph> graph, uint startVertex) {
+void bfs(shared_ptr<graph> graph, uint startVertex) {
     std::queue queue;
 
     std::vector<bool> visited(graph->get_vertices_count(), false);
@@ -31,7 +31,7 @@ void bfs(shared_ptr<ugraph> graph, uint startVertex) {
 }
 
 // pseudocode source: https://en.wikipedia.org/wiki/Depth-first_search
-void dfs(shared_ptr<ugraph> graph, uint startVertex) {
+void dfs(shared_ptr<graph> graph, uint startVertex) {
     std::stack stack;
 
     std::vector<bool> visited(graph->get_vertices_count(), false);

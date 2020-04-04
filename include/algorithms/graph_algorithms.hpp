@@ -4,12 +4,12 @@
 #include <queue>
 #include <stack>
 
-#include "data_structures/ugraph.hpp"
+#include "data_structures/graph.hpp"
 
 namespace algorithms
 {
     // pseudocode source: https://en.wikipedia.org/wiki/Breadth-first_search
-    void bfs(shared_ptr<ugraph> graph, uint startVertex)
+    void bfs(shared_ptr<graph> graph, uint startVertex)
     {
         std::queue queue;
 
@@ -42,7 +42,7 @@ namespace algorithms
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Depth-first_search
-    void dfs(shared_ptr<ugraph> graph, uint startVertex)
+    void dfs(shared_ptr<graph> graph, uint startVertex)
     {
         std::stack stack;
 

@@ -14,24 +14,4 @@ TEST_CASE("percolation")
         REQUIRE((percolation_stats.confidence_hi() >= percolation_stats.mean()) == true);
         REQUIRE((percolation_stats.confidence_lo() <= percolation_stats.mean()) == true);
     }
-
-    SECTION("percolation stats - medium")
-    {
-        applications::percolation_stats percolation_stats(200, 200);
-
-        REQUIRE((percolation_stats.mean() > 0) == true);
-        REQUIRE((percolation_stats.mean() < 1) == true);
-        REQUIRE((percolation_stats.confidence_hi() >= percolation_stats.mean()) == true);
-        REQUIRE((percolation_stats.confidence_lo() <= percolation_stats.mean()) == true);
-    }
-
-    SECTION("percolation stats - large")
-    {
-        applications::percolation_stats percolation_stats(400, 200);
-
-        REQUIRE((percolation_stats.mean() > 0) == true);
-        REQUIRE((percolation_stats.mean() < 1) == true);
-        REQUIRE((percolation_stats.confidence_hi() >= percolation_stats.mean()) == true);
-        REQUIRE((percolation_stats.confidence_lo() <= percolation_stats.mean()) == true);
-    }
 }
