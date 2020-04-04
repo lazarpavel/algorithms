@@ -5,6 +5,8 @@
 #include <utility>
 #include <memory>
 
+#include "data_structures/min_heap.h"
+
 namespace algorithms
 {
     template <typename T>
@@ -30,6 +32,16 @@ namespace algorithms
             uint minIdx = find_min_index(items, i);
             std::swap(items[i], items[minIdx]);
         }
+    }
+
+    // Time: O(n * log n)
+    template <typename T>
+    void heap_sort(std::vector<T>& items)
+    {
+        std::shared_ptr<data_structures::min_heap<T>> heap = std::make_shared<data_structures::min_heap<T>>(items);
+
+        for (uint i = 0; i < items.size(); ++i)
+            items[i] = heap->extract();
     }
 
     // source: The Algorithm Design Manual by Steven S. Skiena
