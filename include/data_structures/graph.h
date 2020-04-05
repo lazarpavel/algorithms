@@ -1,6 +1,8 @@
 #pragma once
 
 #include <exception>
+#include <memory>
+#include <set>
 #include <vector>
 
 namespace data_structures
@@ -15,19 +17,19 @@ namespace data_structures
         int get_weight();
 
     private:
-        uint vertex;
-        int weight;
+        uint m_vertex;
+        int m_weight;
     };
 
     adjacent_node::adjacent_node(uint vertex, int weight)
     {
-        this->vertex = vertex;
-        this->weight = weight;
+        this->m_vertex = vertex;
+        this->m_weight = weight;
     }
 
-    uint adjacent_node::get_vertex() { return this->vertex; }
+    uint adjacent_node::get_vertex() { return this->m_vertex; }
 
-    int adjacent_node::get_weight() { return this->weight; }
+    int adjacent_node::get_weight() { return this->m_weight; }
 
     //
     // Directed Weighted Graph API
@@ -43,19 +45,19 @@ namespace data_structures
         void add_edge(uint v, uint w, int weight);
 
         // return vertices adjacents to vertex v
-        std::set<uint> get_adjacents(uint v) const;
+        std::set<std::shared_ptr<adjacent_node>> get_adjacents(uint v) const;
 
         uint get_vertices_count() const;
         uint get_edges_count() const;
 
     private:
-        std::vector<set<adjacent_node> > m_vertices;
+        std::vector<std::set<std::shared_ptr<adjacent_node> > > m_vertices;
         uint m_vertices_count;
         uint m_edges_count;
     };
 
     graph::graph(uint vertices_count)
-        : m_vertices(vertices_count, std::set<uint>)
+        : m_vertices(vertices_count, std::set<std::shared_ptr<adjacent_node>>())
     {
         m_vertices_count = vertices_count;
         m_edges_count = 0;
@@ -66,13 +68,13 @@ namespace data_structures
         if (v >= m_vertices_count)
             throw new std::out_of_range("Invalid vertex index: " + std::to_string(v));
 
-        if (vw >= m_vertices_count)
+        if (w >= m_vertices_count)
             throw new std::out_of_range("Invalid vertex index: " + std::to_string(w));
 
-        m_vertices[v].insert(w);
+        m_vertices[v].insert(std::make_shared<adjacent_node>(w, weight));
     }
 
-    std::set<uint> graph::get_adjacents(uint v) const
+    std::set<std::shared_ptr<adjacent_node> > graph::get_adjacents(uint v) const
     {
         if (v >= m_vertices_count)
             throw new std::out_of_range("Invalid vertex index: " + std::to_string(v));

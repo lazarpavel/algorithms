@@ -4,14 +4,14 @@
 #include <queue>
 #include <stack>
 
-#include "data_structures/graph.hpp"
+#include "data_structures/graph.h"
 
 namespace algorithms
 {
     // pseudocode source: https://en.wikipedia.org/wiki/Breadth-first_search
-    void bfs(shared_ptr<graph> graph, uint startVertex)
+    void bfs(std::shared_ptr<data_structures::graph> graph, uint startVertex)
     {
-        std::queue queue;
+        std::queue<uint> queue;
 
         std::vector<bool> visited (graph->get_vertices_count(), false);
         std::vector<uint> distance (graph->get_vertices_count(), 0);
@@ -24,27 +24,29 @@ namespace algorithms
 
         while (!queue.empty())
         {
-            uint current = queue.pop();
+            uint current = queue.front();
+            queue.pop();
+
             auto adjacents = graph->get_adjacents(current);
 
             for (auto node : adjacents)
             {
-                if (!visited[node])
+                if (!visited[node->get_vertex()])
                 {
-                    distance[node] = distance[current] + 1;
-                    parents[node] = current;
-                    visited[node] = true;
+                    distance[node->get_vertex()] = distance[current] + node->get_weight();
+                    parents[node->get_vertex()] = current;
+                    visited[node->get_vertex()] = true;
 
-                    queue.push(n);
+                    queue.push(node->get_vertex());
                 }
             }
         }
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Depth-first_search
-    void dfs(shared_ptr<graph> graph, uint startVertex)
+    void dfs(std::shared_ptr<data_structures::graph> graph, uint startVertex)
     {
-        std::stack stack;
+        std::stack<uint> stack;
 
         std::vector<bool> visited (graph->get_vertices_count(), false);
         std::vector<uint> distance (graph->get_vertices_count(), 0);
@@ -57,18 +59,20 @@ namespace algorithms
 
         while (!stack.empty())
         {
-            uint current = stack.pop();
+            uint current = stack.top();
+            stack.pop();
+
             auto adjacents = graph->get_adjacents(current);
 
             for (auto node : adjacents)
             {
-                if (!visited[node])
+                if (!visited[node->get_vertex()])
                 {
-                    distance[node] = distance[current] + 1;
-                    parents[node] = current;
-                    visited[node] = true;
+                    distance[node->get_vertex()] = distance[current] + node->get_weight();
+                    parents[node->get_vertex()] = current;
+                    visited[node->get_vertex()] = true;
 
-                    stack.push(n);
+                    stack.push(node->get_vertex());
                 }
             }
         }
