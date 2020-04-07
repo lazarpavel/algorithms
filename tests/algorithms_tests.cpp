@@ -43,6 +43,56 @@ TEST_CASE("graph algorithms") {
             algorithms::dfs(_graph, 0);
         }
     }
+
+    SECTION("graph sorting algorithms") {
+        SECTION("graph topological sort") {
+            std::shared_ptr<data_structures::graph> _graph = std::make_shared<data_structures::graph>(7);
+            _graph->add_edge(3, 1, 2);
+            _graph->add_edge(3, 4, 4);
+            _graph->add_edge(1, 2, -1);
+            _graph->add_edge(4, 0, 2);
+            _graph->add_edge(2, 5, 5);
+            _graph->add_edge(2, 6, 5);
+
+            std::stack<uint> stack = algorithms::topological_sort(_graph);
+            REQUIRE(stack.top() == 3);
+        }
+    }
+
+    SECTION("graph shortest path algorithms") {
+        SECTION("dijkstra") {
+            std::shared_ptr<data_structures::graph> _graph = std::make_shared<data_structures::graph>();
+            _graph->add_edge(0, 1, 4);
+            _graph->add_edge(0, 2, 4);
+            _graph->add_edge(2, 3, 1);
+            _graph->add_edge(2, 4, 6);
+            _graph->add_edge(2, 5, 3);
+            _graph->add_edge(3, 4, 3);
+            _graph->add_edge(5, 4, 2);
+
+            std::vector<double> expected = { 0, 4, 4, 5, 8, 7 };
+            REQUIRE(algorithms::dijkstra_shortest_path(0, _graph) == expected);
+        }
+
+        SECTION("bellman-ford") {
+            std::shared_ptr<data_structures::graph> _graph = std::make_shared<data_structures::graph>();
+            _graph->add_edge(0, 1, 6);
+            _graph->add_edge(0, 2, 7);
+            _graph->add_edge(1, 3, 5);
+            _graph->add_edge(1, 4, -4);
+            _graph->add_edge(1, 2, 8);
+            _graph->add_edge(2, 3, -3);
+            _graph->add_edge(2, 4, 9);
+            _graph->add_edge(3, 1, -2);
+            _graph->add_edge(4, 0, 2);
+            _graph->add_edge(4, 3, 7);
+
+            std::vector<double> expected = { 0, 2, 7, 4, -2 };
+            REQUIRE(algorithms::bellman_ford_shortest_path(0, _graph) == expected);
+        }
+
+        SECTION("floyd-warshall") {}
+    }
 }
 
 TEST_CASE("sorting algorithms") {

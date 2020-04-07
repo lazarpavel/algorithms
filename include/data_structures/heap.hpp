@@ -14,11 +14,14 @@ namespace data_structures
     public:
         heap(std::vector<T> items);
 
+        heap(size_t size);
+
     public:
         virtual T get() const;
         virtual T extract();
         virtual void insert(const T& value);
-        virtual void print() const;
+
+        virtual bool is_empty();
 
     protected:
         virtual bool compare(const T& lhs, const T& rhs) const = 0;
@@ -44,21 +47,22 @@ namespace data_structures
     }
 
     template<typename T>
-    void data_structures::heap<T>::print() const
+    data_structures::heap<T>::heap(size_t size)
     {
-        for (uint i = 0; i < m_items.size(); ++i)
-            std::cout << m_items[i] << " ";
-
-        std::cout << std::endl;
+        m_items.resize(size);
+        m_position = 0;
     }
 
     template<typename T>
     void data_structures::heap<T>::insert(const T& value)
     {
-        if (m_position == 0) {
+        if (m_position == 0)
+        {
             m_items[m_position + 1] = value;
             m_position = 2;
-        } else {
+        }
+        else
+        {
             m_items[m_position] = value;
             ++m_position;
 
@@ -76,6 +80,12 @@ namespace data_structures
             swap(tmp, tmp / 2);
             tmp = tmp / 2;
         }
+    }
+
+    template<typename T>
+    bool data_structures::heap<T>::is_empty()
+    {
+        return m_position == 0;
     }
 
     template<typename T>
@@ -102,7 +112,8 @@ namespace data_structures
         if (2 * index + 1 < m_position && compare(m_items[heapIdx], m_items[2 * index + 1]))
             heapIdx = 2 * index + 1;
 
-        if (heapIdx != index) {
+        if (heapIdx != index)
+        {
             swap(index, heapIdx);
             shift_down(heapIdx);
         }
