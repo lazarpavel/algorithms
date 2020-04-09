@@ -90,8 +90,29 @@ TEST_CASE("graph algorithms") {
             std::vector<double> expected = { 0, 2, 7, 4, -2 };
             REQUIRE(algorithms::bellman_ford_shortest_path(0, _graph) == expected);
         }
+    }
 
-        SECTION("floyd-warshall") {}
+    SECTION("graph all shortest path algorithms") {
+        SECTION("floyd-warshall") {
+            const int N = 5;
+            const double INF = std::numeric_limits<double>::infinity();
+
+            std::vector<std::vector<double>> adjacency_matrix = {
+                {0, 5, INF, 10},
+                {INF, 0, 3, INF},
+                {INF, INF, 0, 1},
+                {INF, INF, INF, 0}
+            };
+
+            std::vector<std::vector<double>> expected = {
+                { 0.0, 5.0, 8.0, 9.0 },
+                { INF, 0.0, 3.0, 4.0 },
+                { INF, INF, 0.0, 1.0 },
+                { INF, INF, INF, 0.0 }
+            };
+
+            REQUIRE(algorithms::floyd_warshall_all_shortest_paths(adjacency_matrix) == expected);
+        }
     }
 }
 

@@ -163,4 +163,36 @@ namespace algorithms
         return distance;
     }
 
+    std::vector<std::vector<double>> floyd_warshall_all_shortest_paths(std::vector<std::vector<double>> adjacency_matrix)
+    {
+        const size_t N = adjacency_matrix.size();
+
+        for (size_t r = 0; r < N; ++r)
+            if (N != adjacency_matrix[r].size()) throw std::invalid_argument("Invalid adjacency matrix argument");
+
+        std::vector<std::vector<double>> distances(N, std::vector<double>(N, 0));
+
+        for (size_t r = 0; r < N; ++r)
+        {
+            for (size_t c = 0; c < N; ++c)
+            {
+                distances[r][c] = adjacency_matrix[r][c];
+            }
+        }
+
+        for (size_t k = 0; k < N; ++k)
+        {
+            for (size_t r = 0; r < N; ++r)
+            {
+                for (size_t c = 0; c < N; ++c)
+                {
+                    if (distances[r][k] + distances[k][c] < distances[r][c])
+                        distances[r][c] = distances[r][k] + distances[k][c];
+                }
+            }
+        }
+
+        return distances;
+    }
+
 }

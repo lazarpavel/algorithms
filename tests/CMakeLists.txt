@@ -6,12 +6,14 @@ add_executable(
     data_structures_tests.cpp
     application_tests.cpp
     algorithms_tests.cpp
+    euler_tests.cpp
 )
 
 target_link_libraries(
     test_runner
     applications
     data_structures
+    euler
 )
 
 add_test(
@@ -20,4 +22,4 @@ add_test(
     COMMAND
         ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/tests/test_runner
 )
-add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} DEPENDS applications data_structures)
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} DEPENDS applications data_structures euler)
