@@ -51,9 +51,8 @@ namespace interview
     {
         std::string result = two_digit_number_to_words(number % 100, "");
 
-        if (number >= 100) {
+        if (number >= 100)
             result = two_digit_number_to_words(((number / 100) % 10), " Hundred ") + (result.size() > 0 ? "and " : "") + result;
-        }
 
         if (number >= 1000)
             result = two_digit_number_to_words(((number / 1000) % 100), " Thousand ") + result;
