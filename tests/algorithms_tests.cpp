@@ -1,6 +1,6 @@
 #include <catch2/catch.hpp>
 
-#include "algorithms/graph_algorithms.hpp"
+#include "algorithms/graph_algorithms.h"
 #include "algorithms/search_algorithms.hpp"
 #include "algorithms/sorting_algorithms.hpp"
 #include "data_structures/graph.h"

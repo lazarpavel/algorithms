@@ -89,4 +89,8 @@ namespace interview
         }
     }
 
+    int euler::maximum_path_sum(std::shared_ptr<data_structures::graph> graph) {
+        return 0;
+    }
+
 }

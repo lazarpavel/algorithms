@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <memory>
+#include "data_structures/graph.h"
 
 namespace interview
 {
@@ -9,6 +11,7 @@ namespace interview
     public:
         int power_digit_sum(int power);
         int number_letter_counts(unsigned long long int number);
+        int maximum_path_sum(std::shared_ptr<data_structures::graph> graph);
 
     private:
         std::string number_to_words(unsigned long long int number);

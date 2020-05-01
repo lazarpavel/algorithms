@@ -1,12 +1,4 @@
-#pragma once
-
-#include <exception>
-#include <memory>
-#include <queue>
-#include <stack>
-
-#include "data_structures/graph.h"
-#include "data_structures/min_heap.hpp"
+#include "algorithms/graph_algorithms.h"
 
 namespace algorithms
 {
@@ -129,6 +121,41 @@ namespace algorithms
                 {
                     distance[node->get_vertex()] = distance[current] + node->get_weight();
                     priority_queue->insert(std::make_pair(distance[node->get_vertex()], node->get_vertex()));
+                }
+            }
+        }
+
+        return distance;
+    }
+
+    std::vector<double> dijkstra_longest_path(uint start, std::shared_ptr<data_structures::graph> graph)
+    {
+        std::unique_ptr<data_structures::min_heap<std::pair<int, uint>>> priority_queue = std::make_unique<data_structures::min_heap<std::pair<int, uint>>>(graph->get_vertices_count());
+        std::vector<double> inverse_distance(graph->get_vertices_count(), std::numeric_limits<double>::infinity());
+        std::vector<double> distance(graph->get_vertices_count(), std::numeric_limits<double>::infinity());
+
+        priority_queue->insert(std::make_pair(0, start));
+        distance[start] = 0;
+        inverse_distance[start] = 0;
+
+        while(!priority_queue->is_empty())
+        {
+            uint current = priority_queue->extract().second;
+            auto adjacents = graph->get_adjacents(current);
+
+            for (auto node : adjacents)
+            {
+                if (node->get_weight() == 0 && inverse_distance[node->get_vertex()] > inverse_distance[current])
+                {
+                    distance[node->get_vertex()] = distance[current];
+                    inverse_distance[node->get_vertex()] = inverse_distance[current];
+                    priority_queue->insert(std::make_pair(inverse_distance[node->get_vertex()], node->get_vertex()));
+                }
+                else if (inverse_distance[node->get_vertex()] > inverse_distance[current] - node->get_weight())
+                {
+                    distance[node->get_vertex()] = distance[current] + node->get_weight();
+                    inverse_distance[node->get_vertex()] = inverse_distance[current] - node->get_weight();
+                    priority_queue->insert(std::make_pair(inverse_distance[node->get_vertex()], node->get_vertex()));
                 }
             }
         }
