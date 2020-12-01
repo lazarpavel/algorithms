@@ -9,18 +9,18 @@ namespace data_structures
     class weighted_quick_union_uf
     {
     public:
-        weighted_quick_union_uf(const uint size);
+        weighted_quick_union_uf(const unsigned int size);
 
     public:
-        void connect(const uint, const uint);
-        bool connected(const uint, const uint);
+        void connect(const unsigned int, const unsigned int);
+        bool connected(const unsigned int, const unsigned int);
 
     private:
-        uint root(uint id);
+        unsigned int root(unsigned int id);
 
     private:
-        std::vector<uint> m_items;
-        std::vector<uint> m_size;
+        std::vector<unsigned int> m_items;
+        std::vector<unsigned int> m_size;
     };
 
 }

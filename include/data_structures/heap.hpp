@@ -26,17 +26,17 @@ namespace data_structures
     protected:
         virtual bool compare(const T& lhs, const T& rhs) const = 0;
 
-        uint get_parent_index(uint idx);
-        uint get_left_child_index(uint idx);
-        uint get_right_child_index(uint idx);
+        unsigned int get_parent_index(unsigned int idx);
+        unsigned int get_left_child_index(unsigned int idx);
+        unsigned int get_right_child_index(unsigned int idx);
 
         void shift_up();
-        void shift_down(uint index);
-        void swap(uint lhs, uint rhs);
+        void shift_down(unsigned int index);
+        void swap(unsigned int lhs, unsigned int rhs);
 
     protected:
         std::vector<T> m_items;
-        uint m_position;
+        unsigned int m_position;
     };
 
     template<typename T>
@@ -73,7 +73,7 @@ namespace data_structures
     template<typename T>
     void data_structures::heap<T>::shift_up()
     {
-        uint tmp = m_position - 1;
+        unsigned int tmp = m_position - 1;
 
         while(tmp > 1 && compare(m_items[tmp / 2], m_items[tmp]))
         {
@@ -101,10 +101,10 @@ namespace data_structures
     }
 
     template<typename T>
-    void data_structures::heap<T>::shift_down(uint index)
+    void data_structures::heap<T>::shift_down(unsigned int index)
     {
         T tmp = m_items[index];
-        uint heapIdx = index;
+        unsigned int heapIdx = index;
 
         if (2 * index < m_position && compare(m_items[heapIdx], m_items[2 * index]))
             heapIdx = 2 * index;
@@ -120,7 +120,7 @@ namespace data_structures
     }
 
     template<typename T>
-    void data_structures::heap<T>::swap(uint lhs, uint rhs)
+    void data_structures::heap<T>::swap(unsigned int lhs, unsigned int rhs)
     {
         T temp = m_items[lhs];
 
@@ -135,22 +135,22 @@ namespace data_structures
     }
 
     template<typename T>
-    uint data_structures::heap<T>::get_parent_index(uint idx)
+    unsigned int data_structures::heap<T>::get_parent_index(unsigned int idx)
     {
         if (idx == 1)
             return -1;
         else
-            return ((uint) idx / 2);
+            return ((unsigned int) idx / 2);
     }
 
     template<typename T>
-    uint data_structures::heap<T>::get_left_child_index(uint idx)
+    unsigned int data_structures::heap<T>::get_left_child_index(unsigned int idx)
     {
         return 2 * idx;
     }
 
     template<typename T>
-    uint data_structures::heap<T>::get_right_child_index(uint idx)
+    unsigned int data_structures::heap<T>::get_right_child_index(unsigned int idx)
     {
         return (2 * idx) + 1;
     }

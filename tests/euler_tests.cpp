@@ -57,9 +57,6 @@ TEST_CASE("euler problems") {
 
                 g->add_edge(u, v, weights[i + 1][j]);
                 g->add_edge(u, v + 1, weights[i + 1][j + 1]);
-
-                std::cout << u << " " << v << " " << weights[i + 1][j] << std::endl;
-                std::cout << u << " " << v + 1 << " " << weights[i + 1][j + 1] << std::endl;
             }
 
             u_start += weights[i].size();

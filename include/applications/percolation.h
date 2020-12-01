@@ -14,17 +14,17 @@ namespace applications
     class percolation
     {
     public:
-        percolation(const uint n);
+        percolation(const unsigned int n);
 
     public:
-        void open(uint row, uint col);
-        bool is_open(uint row, uint col) const;
-        bool is_full(uint row, uint col) const;
+        void open(unsigned int row, unsigned int col);
+        bool is_open(unsigned int row, unsigned int col) const;
+        bool is_full(unsigned int row, unsigned int col) const;
         bool percolates() const;
 
     private:
         std::vector<std::vector<bool>> m_maze;
-        uint m_size;
+        unsigned int m_size;
 
         std::shared_ptr<data_structures::weighted_quick_union_uf> check_percolates_uf;
         std::shared_ptr<data_structures::weighted_quick_union_uf> check_full_uf;

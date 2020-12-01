@@ -54,7 +54,7 @@ TEST_CASE("graph algorithms") {
             _graph->add_edge(2, 5, 5);
             _graph->add_edge(2, 6, 5);
 
-            std::stack<uint> stack = algorithms::topological_sort(_graph);
+            std::stack<unsigned int> stack = algorithms::topological_sort(_graph);
             REQUIRE(stack.top() == 3);
         }
     }

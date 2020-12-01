@@ -25,7 +25,7 @@ namespace data_structures
     data_structures::min_heap<T>::min_heap(std::vector<T> items)
         : heap<T>::heap(items)
     {
-        for (uint it = 0; it < items.size(); ++it)
+        for (unsigned int it = 0; it < items.size(); ++it)
             this->insert(items[it]);
     }
 

@@ -1,10 +1,6 @@
 #ifndef PERCOLATION_STATS_H
 #define PERCOLATION_STATS_H
 
-#include <iostream>
-#include <experimental/random>
-#include <cmath>
-
 #include "percolation.h"
 
 namespace applications
@@ -12,7 +8,7 @@ namespace applications
     class percolation_stats
     {
     public:
-        percolation_stats(const uint n, const uint trials);
+        percolation_stats(const unsigned int n, const unsigned int trials);
 
     public:
         double mean() const;
@@ -25,8 +21,8 @@ namespace applications
 
     private:
         std::vector<double> m_counts;
-        uint m_trials;
-        uint m_size;
+        unsigned int m_trials;
+        unsigned int m_size;
     };
 }
 #endif /* PERCOLATION_STATS_H */

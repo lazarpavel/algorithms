@@ -10,11 +10,11 @@
 namespace algorithms
 {
     template <typename T>
-    uint find_min_index(std::vector<T>& items, uint startIdx)
+    unsigned int find_min_index(std::vector<T>& items, unsigned int startIdx)
     {
-        uint minIdx = startIdx;
+        unsigned int minIdx = startIdx;
 
-        for (uint i = startIdx + 1; i < items.size(); ++i)
+        for (unsigned int i = startIdx + 1; i < items.size(); ++i)
         {
             if (items[i] < items[minIdx])
                 minIdx = i;
@@ -27,9 +27,9 @@ namespace algorithms
     template <typename T>
     void selection_sort(std::vector<T>& items)
     {
-        for (uint i = 0; i < items.size(); ++i)
+        for (unsigned int i = 0; i < items.size(); ++i)
         {
-            uint minIdx = find_min_index(items, i);
+            unsigned int minIdx = find_min_index(items, i);
             std::swap(items[i], items[minIdx]);
         }
     }
@@ -40,24 +40,24 @@ namespace algorithms
     {
         std::shared_ptr<data_structures::min_heap<T>> heap = std::make_shared<data_structures::min_heap<T>>(items);
 
-        for (uint i = 0; i < items.size(); ++i)
+        for (unsigned int i = 0; i < items.size(); ++i)
             items[i] = heap->extract();
     }
 
     // source: The Algorithm Design Manual by Steven S. Skiena
     template <typename T>
-    void merge(std::vector<T>& items, uint low, uint middle, uint high)
+    void merge(std::vector<T>& items, unsigned int low, unsigned int middle, unsigned int high)
     {
         std::queue<T> lhs;
         std::queue<T> rhs;
 
-        for (uint i = low; i <= middle; ++i)
+        for (unsigned int i = low; i <= middle; ++i)
             lhs.push(items[i]);
 
-        for (uint i = middle + 1; i <= high; ++i)
+        for (unsigned int i = middle + 1; i <= high; ++i)
             rhs.push(items[i]);
 
-        uint it = low;
+        unsigned int it = low;
         while (!(lhs.empty() || rhs.empty()))
         {
             if (lhs.front() <= rhs.front())
@@ -87,11 +87,11 @@ namespace algorithms
 
     // source: The Algorithm Design Manual by Steven S. Skiena
     template <typename T>
-    void merge_sort(std::vector<T>& items, uint low, uint high)
+    void merge_sort(std::vector<T>& items, unsigned int low, unsigned int high)
     {
         if (low < high)
         {
-            uint middle = (low + high) / 2;
+            unsigned int middle = (low + high) / 2;
 
             merge_sort(items, low, middle);
             merge_sort(items, middle + 1, high);
@@ -109,12 +109,12 @@ namespace algorithms
 
     // source: The Algorithm Design Manual by Steven S. Skiena
     template <typename T>
-    uint partition(std::vector<T>& items, uint low, uint high)
+    unsigned int partition(std::vector<T>& items, unsigned int low, unsigned int high)
     {
-        uint pivot = high;
-        uint firstHigh = low;
+        unsigned int pivot = high;
+        unsigned int firstHigh = low;
 
-        for (uint it = low; it < high; ++it)
+        for (unsigned int it = low; it < high; ++it)
         {
             if (items[it] < items[pivot])
             {
@@ -129,11 +129,11 @@ namespace algorithms
 
     // source: The Algorithm Design Manual by Steven S. Skiena
     template <typename T>
-    void quick_sort(std::vector<T>& items, uint low, uint high)
+    void quick_sort(std::vector<T>& items, unsigned int low, unsigned int high)
     {
         if (low < high)
         {
-            uint pivot = partition(items, low, high);
+            unsigned int pivot = partition(items, low, high);
 
             quick_sort(items, low, pivot - 1);
             quick_sort(items, pivot + 1, high);
@@ -151,7 +151,7 @@ namespace algorithms
     template <typename T>
     void insertion_sort(std::vector<T>& items)
     {
-        for (uint i = 1; i < items.size(); ++i)
+        for (unsigned int i = 1; i < items.size(); ++i)
         {
             T temp = items[i];
             int j = i - 1;
@@ -167,7 +167,7 @@ namespace algorithms
     }
 
     template <typename T>
-    void bucket_sort(std::vector<T>& items, uint level = 0)
+    void bucket_sort(std::vector<T>& items, unsigned int level = 0)
     {
     }
 

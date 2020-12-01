@@ -6,7 +6,7 @@ namespace algorithms
 {
     // pseudocode source: https://en.wikipedia.org/wiki/Cycle_detection
     template <typename T>
-    std::pair<uint, uint> detect_cycle_floyd(T (*f)(T& data), T& data)
+    std::pair<unsigned int, unsigned int> detect_cycle_floyd(T (*f)(T& data), T& data)
     {
         // Main phase of algorithm: finding a repetition x_i = x_2i.
         // The fast moves twice as quickly as the slow and
@@ -33,7 +33,7 @@ namespace algorithms
         // they will agree as soon as the slow reaches index μ.
 
         // Find the position start_cycle of first repetition.
-        uint start_cycle = 0;
+        unsigned int start_cycle = 0;
         slow = data;
 
         while (slow != fast)
@@ -48,7 +48,7 @@ namespace algorithms
         // The fast moves one step at a time while slow is still.
         // end_cycle is incremented until λ is found.
 
-        uint end_cycle = 1;
+        unsigned int end_cycle = 1;
         fast = f(slow);
 
         while (fast != slow)
@@ -57,15 +57,15 @@ namespace algorithms
             ++end_cycle;
         }
 
-        return std::make_pair<uint, uint>(start_cycle, end_cycle);
+        return std::make_pair<unsigned int, unsigned int>(start_cycle, end_cycle);
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Cycle_detection
     template <typename T>
-    std::pair<uint, uint> detect_cycle_brent(T (*f)(T& data), T& data)
+    std::pair<unsigned int, unsigned int> detect_cycle_brent(T (*f)(T& data), T& data)
     {
-        uint power = 1;
-        uint end_cycle = 1;
+        unsigned int power = 1;
+        unsigned int end_cycle = 1;
 
         T slow = data;
         T fast = f(data);
@@ -83,11 +83,11 @@ namespace algorithms
             ++end_cycle;
         }
 
-        uint start_cycle = 0;
+        unsigned int start_cycle = 0;
         slow = data;
         fast = data;
 
-        for (uint it = 0; it < end_cycle; ++it)
+        for (unsigned int it = 0; it < end_cycle; ++it)
             fast = f(fast);
 
         while (fast != slow)
@@ -98,6 +98,6 @@ namespace algorithms
             ++start_cycle;
         }
 
-        return std::make_pair<uint, uint>(start_cycle, end_cycle);
+        return std::make_pair<unsigned int, unsigned int>(start_cycle, end_cycle);
     }
 }

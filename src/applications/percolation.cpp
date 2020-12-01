@@ -3,7 +3,7 @@
 #include "applications/percolation.h"
 
 // create n-by-n grid, with all sites blocked
-applications::percolation::percolation(const uint n)
+applications::percolation::percolation(const unsigned int n)
     : m_maze(n, std::vector<bool>(n, false)), m_size(n)
 {
     // add 2 elements for virtual top and virtual bottom sites
@@ -12,7 +12,7 @@ applications::percolation::percolation(const uint n)
 }
 
 // open site (row, col) if it is not open already
-void applications::percolation::open(uint row, uint col)
+void applications::percolation::open(unsigned int row, unsigned int col)
 {
     if (row >= m_size)
         throw std::out_of_range("row out of range");
@@ -58,7 +58,7 @@ void applications::percolation::open(uint row, uint col)
 }
 
 // is site (row, col) open?
-bool applications::percolation::is_open(uint row, uint col) const
+bool applications::percolation::is_open(unsigned int row, unsigned int col) const
 {
     if (row >= m_size)
         throw std::out_of_range("row out of range");
@@ -69,7 +69,7 @@ bool applications::percolation::is_open(uint row, uint col) const
 }
 
 // is site (row, col) full?
-bool applications::percolation::is_full(uint row, uint col) const
+bool applications::percolation::is_full(unsigned int row, unsigned int col) const
 {
     if (row >= m_size)
         throw std::out_of_range("row out of range");

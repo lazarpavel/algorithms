@@ -1,15 +1,16 @@
 #include "algorithms/graph_algorithms.h"
+#include <limits>
 
 namespace algorithms
 {
     // pseudocode source: https://en.wikipedia.org/wiki/Breadth-first_search
-    void bfs(std::shared_ptr<data_structures::graph> graph, uint startVertex)
+    void bfs(std::shared_ptr<data_structures::graph> graph, unsigned int startVertex)
     {
-        std::queue<uint> queue;
+        std::queue<unsigned int> queue;
 
         std::vector<bool> visited(graph->get_vertices_count(), false);
-        std::vector<uint> distance(graph->get_vertices_count(), 0);
-        std::vector<uint> parents(graph->get_vertices_count(), 0);
+        std::vector<unsigned int> distance(graph->get_vertices_count(), 0);
+        std::vector<unsigned int> parents(graph->get_vertices_count(), 0);
 
         visited[startVertex] = true;
         distance[startVertex] = 0;
@@ -18,7 +19,7 @@ namespace algorithms
 
         while (!queue.empty())
         {
-            uint current = queue.front();
+            unsigned int current = queue.front();
             queue.pop();
 
             auto adjacents = graph->get_adjacents(current);
@@ -38,13 +39,13 @@ namespace algorithms
     }
 
     // pseudocode source: https://en.wikipedia.org/wiki/Depth-first_search
-    void dfs(std::shared_ptr<data_structures::graph> graph, uint startVertex)
+    void dfs(std::shared_ptr<data_structures::graph> graph, unsigned int startVertex)
     {
-        std::stack<uint> stack;
+        std::stack<unsigned int> stack;
 
         std::vector<bool> visited(graph->get_vertices_count(), false);
-        std::vector<uint> distance(graph->get_vertices_count(), 0);
-        std::vector<uint> parents(graph->get_vertices_count(), 0);
+        std::vector<unsigned int> distance(graph->get_vertices_count(), 0);
+        std::vector<unsigned int> parents(graph->get_vertices_count(), 0);
 
         visited[startVertex] = true;
         distance[startVertex] = 0;
@@ -53,7 +54,7 @@ namespace algorithms
 
         while (!stack.empty())
         {
-            uint current = stack.top();
+            unsigned int current = stack.top();
             stack.pop();
 
             auto adjacents = graph->get_adjacents(current);
@@ -72,7 +73,7 @@ namespace algorithms
         }
     }
 
-    void topological_sort_util(uint v, std::vector<bool>& visited, std::stack<uint>& stack, std::shared_ptr<data_structures::graph> graph)
+    void topological_sort_util(unsigned int v, std::vector<bool>& visited, std::stack<unsigned int>& stack, std::shared_ptr<data_structures::graph> graph)
     {
         visited[v] = true;
 
@@ -86,12 +87,12 @@ namespace algorithms
         stack.push(v);
     }
 
-    std::stack<uint> topological_sort(std::shared_ptr<data_structures::graph> graph)
+    std::stack<unsigned int> topological_sort(std::shared_ptr<data_structures::graph> graph)
     {
         std::vector<bool> visited(graph->get_vertices_count(), false);
-        std::stack<uint> stack;
+        std::stack<unsigned int> stack;
 
-        for (uint v = 0; v < graph->get_vertices_count(); ++v)
+        for (unsigned int v = 0; v < graph->get_vertices_count(); ++v)
         {
             if (!visited[v])
             {
@@ -102,9 +103,9 @@ namespace algorithms
         return stack;
     }
 
-    std::vector<double> dijkstra_shortest_path(uint start, std::shared_ptr<data_structures::graph> graph)
+    std::vector<double> dijkstra_shortest_path(unsigned int start, std::shared_ptr<data_structures::graph> graph)
     {
-        std::unique_ptr<data_structures::min_heap<std::pair<int, uint>>> priority_queue = std::make_unique<data_structures::min_heap<std::pair<int, uint>>>(graph->get_vertices_count());
+        std::unique_ptr<data_structures::min_heap<std::pair<int, unsigned int>>> priority_queue = std::make_unique<data_structures::min_heap<std::pair<int, unsigned int>>>(graph->get_vertices_count());
         std::vector<double> distance(graph->get_vertices_count(), std::numeric_limits<double>::infinity());
 
         priority_queue->insert(std::make_pair(0, start));
@@ -112,7 +113,7 @@ namespace algorithms
 
         while(!priority_queue->is_empty())
         {
-            uint current = priority_queue->extract().second;
+            unsigned int current = priority_queue->extract().second;
             auto adjacents = graph->get_adjacents(current);
 
             for (auto node : adjacents)
@@ -128,9 +129,9 @@ namespace algorithms
         return distance;
     }
 
-    std::vector<double> dijkstra_longest_path(uint start, std::shared_ptr<data_structures::graph> graph)
+    std::vector<double> dijkstra_longest_path(unsigned int start, std::shared_ptr<data_structures::graph> graph)
     {
-        std::unique_ptr<data_structures::min_heap<std::pair<int, uint>>> priority_queue = std::make_unique<data_structures::min_heap<std::pair<int, uint>>>(graph->get_vertices_count());
+        std::unique_ptr<data_structures::min_heap<std::pair<int, unsigned int>>> priority_queue = std::make_unique<data_structures::min_heap<std::pair<int, unsigned int>>>(graph->get_vertices_count());
         std::vector<double> inverse_distance(graph->get_vertices_count(), std::numeric_limits<double>::infinity());
         std::vector<double> distance(graph->get_vertices_count(), std::numeric_limits<double>::infinity());
 
@@ -140,7 +141,7 @@ namespace algorithms
 
         while(!priority_queue->is_empty())
         {
-            uint current = priority_queue->extract().second;
+            unsigned int current = priority_queue->extract().second;
             auto adjacents = graph->get_adjacents(current);
 
             for (auto node : adjacents)
@@ -163,12 +164,12 @@ namespace algorithms
         return distance;
     }
 
-    std::vector<double> bellman_ford_shortest_path(uint start, std::shared_ptr<data_structures::graph> graph)
+    std::vector<double> bellman_ford_shortest_path(unsigned int start, std::shared_ptr<data_structures::graph> graph)
     {
         std::vector<double> distance(graph->get_vertices_count(), std::numeric_limits<double>::infinity());
         distance[start] = 0;
 
-        for (uint it = 0; it < graph->get_vertices_count() - 1; ++it)
+        for (unsigned int it = 0; it < graph->get_vertices_count() - 1; ++it)
         {
             for (auto edge : graph->get_edges())
             {

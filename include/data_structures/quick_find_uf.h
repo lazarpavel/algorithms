@@ -9,13 +9,13 @@ namespace data_structures
     class quick_find_uf
     {
     public:
-        quick_find_uf(const uint size);
+        quick_find_uf(const unsigned int size);
 
     public:
-        void connect(const uint, const uint);
-        bool connected(const uint, const uint) const;
+        void connect(const unsigned int, const unsigned int);
+        bool connected(const unsigned int, const unsigned int) const;
 
     private:
-        std::vector<uint> m_items;
+        std::vector<unsigned int> m_items;
     };
 }

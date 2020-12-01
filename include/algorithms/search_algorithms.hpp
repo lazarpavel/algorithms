@@ -22,7 +22,7 @@ namespace algorithms
         iterator fst = begin;
         iterator lst = end;
 
-        uint distance = std::distance(begin, end);
+        unsigned int distance = std::distance(begin, end);
 
         while (distance > 1)
         {

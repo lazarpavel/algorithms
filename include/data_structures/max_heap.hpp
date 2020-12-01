@@ -22,7 +22,7 @@ namespace data_structures
     template<typename T>
     data_structures::max_heap<T>::max_heap(std::vector<T> items)
         : heap<T>::heap(items) {
-        for (uint it = 0; it < items.size(); ++it)
+        for (unsigned int it = 0; it < items.size(); ++it)
             this->insert(items[it]);
     }
 

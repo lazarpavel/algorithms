@@ -1,32 +1,34 @@
 #include "data_structures/graph.h"
 
+#include <stdexcept>
+
 namespace data_structures
 {
     // graph node
-    graph_node::graph_node(uint vertex, double weight)
+    graph_node::graph_node(unsigned int vertex, double weight)
     {
         this->m_vertex = vertex;
         this->m_weight = weight;
     }
 
-    uint graph_node::get_vertex() { return this->m_vertex; }
+    unsigned int graph_node::get_vertex() { return this->m_vertex; }
 
     double graph_node::get_weight() { return this->m_weight; }
 
     // graph edge
-    graph_edge::graph_edge(uint src, uint dst, double weight)
+    graph_edge::graph_edge(unsigned int src, unsigned int dst, double weight)
     {
         this->src = src;
         this->dst = dst;
         this->weight = weight;
     }
 
-    uint graph_edge::get_src()
+    unsigned int graph_edge::get_src()
     {
         return this->src;
     }
 
-    uint graph_edge::get_dst()
+    unsigned int graph_edge::get_dst()
     {
         return this->dst;
     }
@@ -37,7 +39,7 @@ namespace data_structures
     }
 
     // graph
-    graph::graph(uint vertices_count)
+    graph::graph(unsigned int vertices_count)
         : m_vertices(vertices_count, std::set<std::shared_ptr<graph_node>>())
     {
         m_vertices_count = vertices_count;
@@ -50,7 +52,7 @@ namespace data_structures
         m_edges_count = 0;
     }
 
-    void graph::add_edge(uint v, uint w, double weight)
+    void graph::add_edge(unsigned int v, unsigned int w, double weight)
     {
         if (std::max(v, w) >= m_vertices_count)
         {
@@ -63,10 +65,10 @@ namespace data_structures
         m_vertices[v].insert(std::make_shared<graph_node>(w, weight));
     }
 
-    std::set<std::shared_ptr<graph_node>> graph::get_adjacents(uint v) const
+    std::set<std::shared_ptr<graph_node>> graph::get_adjacents(unsigned int v) const
     {
         if (v >= m_vertices_count)
-            throw new std::out_of_range("invalid vertex index: " + std::to_string(v));
+            throw std::out_of_range("invalid vertex index: " + std::to_string(v));
 
         return m_vertices[v];
     }
@@ -76,8 +78,8 @@ namespace data_structures
         return m_edges;
     }
 
-    uint graph::get_vertices_count() const { return m_vertices_count; }
+    unsigned int graph::get_vertices_count() const { return m_vertices_count; }
 
-    uint graph::get_edges_count() const { return m_edges_count; }
+    unsigned int graph::get_edges_count() const { return m_edges_count; }
 
 }
