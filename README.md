@@ -7,6 +7,7 @@ C++ Implementations of [Wikipedia's List of Algorithms](https://en.wikipedia.org
 ``` bash
 cd build
 cmake ..
+make
 ```
 
 ## test

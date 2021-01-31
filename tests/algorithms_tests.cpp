@@ -2,6 +2,7 @@
 
 #include "algorithms/graph_algorithms.h"
 #include "algorithms/search_algorithms.hpp"
+#include "algorithms/selection_algorithms.hpp"
 #include "algorithms/sorting_algorithms.hpp"
 #include "data_structures/graph.h"
 
@@ -97,14 +98,14 @@ TEST_CASE("graph algorithms") {
             const int N = 5;
             const double INF = std::numeric_limits<double>::infinity();
 
-            std::vector<std::vector<double>> adjacency_matrix = {
+            std::vector<std::vector<double> > adjacency_matrix = {
                 {0, 5, INF, 10},
                 {INF, 0, 3, INF},
                 {INF, INF, 0, 1},
                 {INF, INF, INF, 0}
             };
 
-            std::vector<std::vector<double>> expected = {
+            std::vector<std::vector<double> > expected = {
                 { 0.0, 5.0, 8.0, 9.0 },
                 { INF, 0.0, 3.0, 4.0 },
                 { INF, INF, 0.0, 1.0 },
@@ -183,6 +184,20 @@ TEST_CASE("search algorithms") {
 
             it = algorithms::binary_search(items.begin(), items.end(), 2);
             REQUIRE(it == items.end());
+        }
+    }
+}
+
+TEST_CASE("selection algorithms") {
+    SECTION("kth order statistic") {
+        SECTION("quick select") {
+            auto integer_comparator = [] (std::vector<int>::iterator a, std::vector<int>::iterator b) { return *a < *b; };
+
+            std::vector<int> items = { 3, 6, -1, 5, 24, 24, 4 };
+            std::vector<int>::iterator it = algorithms::quick_select(items.begin(), items.end(), items.begin() + 3, integer_comparator);
+
+            REQUIRE(it != items.end());
+            REQUIRE(*it == 5);
         }
     }
 }
