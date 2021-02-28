@@ -1,6 +1,7 @@
 #include <catch2/catch.hpp>
 
 #include "algorithms/graph_algorithms.h"
+#include "algorithms/math_algorithms.hpp"
 #include "algorithms/search_algorithms.hpp"
 #include "algorithms/selection_algorithms.hpp"
 #include "algorithms/sorting_algorithms.hpp"
@@ -198,6 +199,34 @@ TEST_CASE("selection algorithms") {
 
             REQUIRE(it != items.end());
             REQUIRE(*it == 5);
+        }
+    }
+}
+
+TEST_CASE("math algorithms") {
+    SECTION("big numbers") {
+        SECTION("karatsuba addition") {
+            std::vector<unsigned> x = { 5,6,7,9,8 };
+            std::vector<unsigned> y = { 2,5,6,4,8 };
+            std::vector<unsigned> expected = { 8,2,4,4,6 };
+
+            REQUIRE(expected == algorithms::karatsuba_add(x, y));
+        }
+
+        SECTION("karatsuba substraction") {
+            std::vector<unsigned> x = { 5,6,7,9,8 };
+            std::vector<unsigned> y = { 2,5,6,4,8 };
+            std::vector<unsigned> expected = { 3,1,1,5,0 };
+
+            REQUIRE(expected == algorithms::karatsuba_substract(x, y));
+        }
+
+        SECTION("karatsuba multiplication") {
+            std::vector<unsigned> x = { 6,5 };
+            std::vector<unsigned> y = { 6,9 };
+            std::vector<unsigned> expected = { 4,4,8,5 };
+
+            REQUIRE(expected == algorithms::karatsuba_multiply(x, y));
         }
     }
 }

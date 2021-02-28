@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_PLATFORM_INDEPENDENT_CODE ON)
 
+add_definitions(-std=c++11)
+
 include(CTest)
 enable_testing()
 
