@@ -191,11 +191,11 @@ TEST_CASE("search algorithms") {
 
 TEST_CASE("selection algorithms") {
     SECTION("kth order statistic") {
-        SECTION("quick select") {
+        SECTION("randomized quick select") {
             auto integer_comparator = [] (std::vector<int>::iterator a, std::vector<int>::iterator b) { return *a < *b; };
 
             std::vector<int> items = { 3, 6, -1, 5, 24, 24, 4 };
-            std::vector<int>::iterator it = algorithms::quick_select(items.begin(), items.end(), items.begin() + 3, integer_comparator);
+            std::vector<int>::iterator it = algorithms::randomized_quick_select(items.begin(), items.end(), 4, integer_comparator);
 
             REQUIRE(it != items.end());
             REQUIRE(*it == 5);

@@ -27,3 +27,44 @@ The cars in the formed fleet will have the same position and the same speed, whi
 Return an array answer, where answer[i] is the time, in seconds, at which the ith car collides with the next car, or -1
 if the car does not collide with the next car. Answers within 10-5 of the actual answers are accepted.
 ```
+
+## P2 - Count the Number of Inversions
+
+```text
+Having an array with N elements count the number of inversions required to get the array sorted
+See Algorithms Illuminated and merge sort
+```
+
+## P3 - The Closest Pair
+
+```text
+Given a list of N points on a plane defined by (x,y) coordinates, write an algorithm that will return the closest pair.
+Consider that some points can have same x or y coordinates.
+
+d(p1, p2) = sqrt((x1 - x2)^2 + (y1 - y2)^2)
+
+- brute force (calc distance between all pairs - O(n^2))
+```
+
+## P4 - Unimodal
+
+```text
+You are given an unimodal array of n distinct  elements, meaning that its entries are increasing up to MAX then decreasing order.
+Give an algorithm to compute the max value in O(log n) time
+```
+
+## P5 - A[i] = i
+
+```text
+You are given a sorted array A of n integers which can be positive, negative or zero. Design the fastest algorithm you can
+for deciding whether or not there is an index i such that A[i] = i
+```
+
+
+## P5 - Local minimum
+
+```text
+You are given an n-bya-n grid of distinct numbers. A number is a local minimum if it is smaller than all its neighbors.
+(neighbor is the number above, below, left, right). Use divide-and-conquer design paradigm to compute a local minimum with only O(n)
+comparisons between pairs of numbers
+```

@@ -1457,14 +1457,14 @@ nl_union_brace                  = remove   # ignore/add/remove/force
 nl_if_brace                     = force   # ignore/add/remove/force
 
 # Add or remove newline between '}' and 'else'.
-nl_brace_else                   = remove   # ignore/add/remove/force
+nl_brace_else                   = add   # ignore/add/remove/force
 
 # Add or remove newline between 'else if' and '{'. If set to ignore,
 # nl_if_brace is used instead.
-nl_elseif_brace                 = remove   # ignore/add/remove/force
+nl_elseif_brace                 = add   # ignore/add/remove/force
 
 # Add or remove newline between 'else' and '{'.
-nl_else_brace                   = remove   # ignore/add/remove/force
+nl_else_brace                   = add   # ignore/add/remove/force
 
 # Add or remove newline between 'else' and 'if'.
 nl_else_if                      = remove   # ignore/add/remove/force
@@ -1476,7 +1476,7 @@ nl_before_opening_brace_func_class_def = ignore   # ignore/add/remove/force
 nl_before_if_closing_paren      = remove   # ignore/add/remove/force
 
 # Add or remove newline between '}' and 'finally'.
-nl_brace_finally                = remove   # ignore/add/remove/force
+nl_brace_finally                = add   # ignore/add/remove/force
 
 # Add or remove newline between 'finally' and '{'.
 nl_finally_brace                = remove   # ignore/add/remove/force
@@ -1499,7 +1499,7 @@ nl_catch_brace                  = remove   # ignore/add/remove/force
 nl_oc_catch_brace               = remove   # ignore/add/remove/force
 
 # Add or remove newline between '}' and 'catch'.
-nl_brace_catch                  = remove   # ignore/add/remove/force
+nl_brace_catch                  = add   # ignore/add/remove/force
 
 # (OC) Add or remove newline between '}' and '@catch'. If set to ignore,
 # nl_brace_catch is used.
