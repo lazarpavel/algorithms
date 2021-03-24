@@ -28,4 +28,7 @@ namespace algorithms
 
     std::vector<std::vector<double>> floyd_warshall_all_shortest_paths(std::vector<std::vector<double>> adjacency_matrix);
 
+    // https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
+    std::vector<std::vector<data_structures::graph_node>> kosaraju_strongly_connected_components(std::shared_ptr<data_structures::graph> graph);
+
 }

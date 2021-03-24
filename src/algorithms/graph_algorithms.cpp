@@ -223,4 +223,10 @@ namespace algorithms
         return distances;
     }
 
+    std::vector<std::vector<data_structures::graph_node>> kosaraju_strongly_connected_components(std::shared_ptr<data_structures::graph> graph)
+    {
+        std::vector<std::vector<data_structures::graph_node>> connected_components;
+
+        return connected_components;
+    }
 }

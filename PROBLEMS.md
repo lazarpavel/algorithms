@@ -60,11 +60,46 @@ You are given a sorted array A of n integers which can be positive, negative or 
 for deciding whether or not there is an index i such that A[i] = i
 ```
 
-
 ## P5 - Local minimum
 
 ```text
 You are given an n-bya-n grid of distinct numbers. A number is a local minimum if it is smaller than all its neighbors.
 (neighbor is the number above, below, left, right). Use divide-and-conquer design paradigm to compute a local minimum with only O(n)
 comparisons between pairs of numbers
+```
+
+## P6 - Detect Strongly Connected Components in a directed graph
+
+```text
+kosaraju_strongly_connected_components
+```
+
+## p7 - Detect graph bottleneck
+
+```text
+Check Dijkstra's Shortest Path (probably by inverting the graph weight aka 1/weight)
+```
+
+## P8 - Implement Scheduler (Greedy Paradigm - Using ratio)
+
+```text
+Schedule the jobs in decreasing order of wj/lj (breaking ties arbitrarily)
+```
+
+## P9 - Implement Huffman Algorithm
+
+```text
+Implement 2 variants:
+- heap based
+- radix sort based
+```
+
+## PX
+
+```text
+- Minimum Spanning Tree (Undirected Graph) && Optimum Branching Problem (Directed Graph)
+- Heap Based Prim's Algorithm
+- Minimum Spanning Forrest Problem (Non connected graphs)
+- UnionFind Based Kruskal's Algorithm
+- Implement Bottom-Up clustering using Kruskal's Algorithm (create K clusters)
 ```
