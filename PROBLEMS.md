@@ -94,7 +94,7 @@ Implement 2 variants:
 - radix sort based
 ```
 
-## PX
+## PX - Greedy Paradigm
 
 ```text
 - Minimum Spanning Tree (Undirected Graph) && Optimum Branching Problem (Directed Graph)
@@ -102,4 +102,37 @@ Implement 2 variants:
 - Minimum Spanning Forrest Problem (Non connected graphs)
 - UnionFind Based Kruskal's Algorithm
 - Implement Bottom-Up clustering using Kruskal's Algorithm (create K clusters)
+```
+
+## PX - Dynamic Programming Paradigm
+
+```text
+- Maximum Weighed Independent Set (SUM) + Reconstruction
+- Knapsack Problem
+```
+
+
+## Data Structures
+
+```text
+[https://medium.com/omarelgabrys-blog/balanced-search-trees-68a95ba91f50#:~:text=A%20balanced%20binary%20search%20tree,structures%20such%20as%20associative%20arrays].
+
+2–3 tree
+AA tree
+AVL tree
+B-tree
+Red–black tree
+Scapegoat tree
+Splay tree
+Tango tree
+Treap
+Weight-balanced tree
+```
+
+## PX - Advanced Dynamic Programming Paradigm
+
+```text
+- Sequence Alignment
+- Needleman-Wunsch distance between 2 strings
+- Optimal Binary Search Tree
 ```
