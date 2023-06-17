@@ -204,6 +204,17 @@ TEST_CASE("selection algorithms") {
 }
 
 TEST_CASE("math algorithms") {
+    SECTION("greatest common divisor") {
+        REQUIRE(algorithms::gcd(0, 0) == 0);
+        REQUIRE(algorithms::gcd(0, 1) == 1);
+        REQUIRE(algorithms::gcd(1, 0) == 1);
+        REQUIRE(algorithms::gcd(1, 1) == 1);
+        REQUIRE(algorithms::gcd(2, 2) == 2);
+        REQUIRE(algorithms::gcd(2, 4) == 2);
+        REQUIRE(algorithms::gcd(4, 2) == 2);
+        REQUIRE(algorithms::gcd(366, 60) == 6);
+    }
+
     SECTION("big numbers") {
         SECTION("karatsuba addition") {
             std::vector<unsigned> x = { 5,6,7,9,8 };
@@ -213,12 +224,12 @@ TEST_CASE("math algorithms") {
             REQUIRE(expected == algorithms::karatsuba_add(x, y));
         }
 
-        SECTION("karatsuba substraction") {
+        SECTION("karatsuba subtraction") {
             std::vector<unsigned> x = { 5,6,7,9,8 };
             std::vector<unsigned> y = { 2,5,6,4,8 };
             std::vector<unsigned> expected = { 3,1,1,5,0 };
 
-            REQUIRE(expected == algorithms::karatsuba_substract(x, y));
+            REQUIRE(expected == algorithms::karatsuba_subtract(x, y));
         }
 
         SECTION("karatsuba multiplication") {

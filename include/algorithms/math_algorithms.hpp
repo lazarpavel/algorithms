@@ -2,10 +2,22 @@
 
 #include <algorithm>
 #include <iterator>
+#include <vector>
 
 namespace algorithms
 {
-    std::vector<unsigned> karatsuba_substract(std::vector<unsigned> x, std::vector<unsigned> y)
+    // https://en.wikipedia.org/wiki/Euclidean_algorithm
+    unsigned int gcd(unsigned int a, unsigned int b)
+    {
+        if (a == 0)
+        {
+            return b;
+        }
+
+        return gcd(b % a, a);
+    }
+
+    std::vector<unsigned> karatsuba_subtract(std::vector<unsigned> x, std::vector<unsigned> y)
     {
         int length = std::max(x.size(), y.size());
 
@@ -133,7 +145,7 @@ namespace algorithms
         std::vector<unsigned> q = karatsuba_add(c, d);
         std::vector<unsigned> pq = karatsuba_multiply(p, q);
 
-        std::vector<unsigned> adbc = karatsuba_substract(pq, karatsuba_add(ac, bd));
+        std::vector<unsigned> adbc = karatsuba_subtract(pq, karatsuba_add(ac, bd));
 
         for (unsigned i = 0; i < length; ++i)
         {
