@@ -15,6 +15,7 @@ target_link_libraries(
     applications
     data_structures
     euler
+    Catch2::Catch2WithMain
 )
 
 add_test(

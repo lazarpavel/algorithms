@@ -1,4 +1,4 @@
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 #include "algorithms/graph_algorithms.h"
 #include "algorithms/math_algorithms.hpp"

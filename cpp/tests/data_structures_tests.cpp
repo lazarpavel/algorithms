@@ -1,4 +1,4 @@
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 #include "data_structures/quick_find_uf.h"
 #include "data_structures/quick_union_uf.h"
